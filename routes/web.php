@@ -47,7 +47,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
 {
     Route::prefix('master')->name('master.')->namespace('Master')->group(function () 
     {
-        Route::get('/home', 'Home\HomeController@index')->name('home');
+        Route::get('/home', 'HomeController@index')->name('home');
     });
 
     Route::prefix('leaves')->name('leaves.')->group(function () 
