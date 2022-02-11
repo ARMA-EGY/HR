@@ -48,6 +48,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
     Route::prefix('master')->name('master.')->namespace('Master')->group(function () 
     {
         Route::get('/home', 'HomeController@index')->name('home');
+        
+        //CONTRACTS ROUTES
+        Route::resource('/contract', 'ContractsController');
+
+        //DEPARTMENTS ROUTES
+        Route::resource('/department', 'DepartmentsController');
+
+        //EMPLOYEES ROUTES
+        Route::resource('/employee', 'EmployeesController');
+        
     });
 
     Route::prefix('leaves')->name('leaves.')->group(function () 

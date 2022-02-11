@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Employees\AddRequest;
 use App\Http\Requests\Employees\UpdateRequest;
 use App\Models\Employee;
+use App\Models\WorkAddress;
 use App\Models\User;
 
 class EmployeesController extends Controller
@@ -58,9 +59,10 @@ class EmployeesController extends Controller
 		$managers       = User::orderBy('id','desc')->get();
         $departments       = Department::orderBy('id','desc')->get();
         $countries       = Countries::orderBy('id','desc')->get();
+        $employeeWorkAddresses = WorkAddress::orderBy('id','desc')->get();
 
+        //no models created for this tables
         $tags       = Tag::orderBy('id','desc')->get();
-        $employeeWorkAddresses = EmployeeWorkAddresses::orderBy('id','desc')->get();
         $employeeWorkLocations = EmployeeWorkLocations::orderBy('id','desc')->get();
         $workingHours = WorkingHours::orderBy('id','desc')->get();
         $timeZones = TimeZones::orderBy('id','desc')->get();
@@ -73,9 +75,10 @@ class EmployeesController extends Controller
             'managers' => $managers,
             'departments' => $departments,
             'countries' => $countries,
-
-            'tags' => $tags,
             'employeeWorkAddresses' => $employeeWorkAddresses,
+
+            //no models created for this tables
+            'tags' => $tags,
             'employeeWorkLocations' => $employeeWorkLocations,
             'workingHours' => $workingHours,
             'timeZones' => $timeZones,
@@ -147,9 +150,10 @@ class EmployeesController extends Controller
 		$managers       = User::orderBy('id','desc')->get();
         $departments       = Department::orderBy('id','desc')->get();
         $countries       = Countries::orderBy('id','desc')->get();
+        $employeeWorkAddresses = WorkAddress::orderBy('id','desc')->get();
 
+        //no models created for this tables
         $tags       = Tag::orderBy('id','desc')->get();
-        $employeeWorkAddresses = EmployeeWorkAddresses::orderBy('id','desc')->get();
         $employeeWorkLocations = EmployeeWorkLocations::orderBy('id','desc')->get();
         $workingHours = WorkingHours::orderBy('id','desc')->get();
         $timeZones = TimeZones::orderBy('id','desc')->get();
@@ -162,9 +166,10 @@ class EmployeesController extends Controller
             'managers' => $managers,
             'departments' => $departments,
             'countries' => $countries,
-
-            'tags' => $tags,
             'employeeWorkAddresses' => $employeeWorkAddresses,
+
+            //no models created for this tables
+            'tags' => $tags,
             'employeeWorkLocations' => $employeeWorkLocations,
             'workingHours' => $workingHours,
             'timeZones' => $timeZones,
