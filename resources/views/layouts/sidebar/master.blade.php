@@ -14,7 +14,8 @@
                         <span >{{__('master.EMPLOYEES')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="#"><i class="bx bx-disc fs-16"></i> Link</a></li>
+                        <li class=" {{request()->routeIs('master.employee.index') ? 'mm-active' : '' }}"><a href="{{route('master.employee.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-EMPLOYEES')}}</a></li>
+                        <li class=" {{request()->routeIs('master.employee.create') ? 'mm-active' : '' }}"><a href="{{route('master.employee.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-EMPLOYEE')}}</a></li>
                     </ul>
                 </li>
 

@@ -74,4 +74,9 @@ return [
     "TASKS" => "المهام",
     "PROJECTS" => "المشاريع",
 
+    "ALL-EMPLOYEES" => "جميع الموظفون",
+    "CREATE-EMPLOYEE" => "اضافة موظف",
+
+    "ALL" => "الجميع",
+
 ];

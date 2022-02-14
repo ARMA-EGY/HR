@@ -57,3 +57,40 @@
     position: relative;
     overflow: hidden;
 }
+
+.card-shadow
+{
+  border-radius: 10px;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 0 5px 1px #ddd;
+}
+
+.horizontal_separator
+{
+    box-shadow: 0 1px 0 rgb(68 75 90 / 5%);
+}
+
+.text-sm
+{
+    font-size: 12px;
+}
+
+.select2-container 
+{
+    width: 100% !important;
+}
+
+.select2-container .select2-selection--single 
+{
+    height: 27px;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered 
+{
+    line-height: 27px;
+}
+
+.select2-container .select2-selection--single .select2-selection__arrow 
+{
+    height: 27px;
+}
