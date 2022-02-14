@@ -15,6 +15,12 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
 
+        <!-- select2 css -->
+        <link href="{{asset('assets/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
+
+        <!-- dropzone css -->
+        <link href="{{asset('assets/libs/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
+
         <!-- Bootstrap Css -->
         <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
@@ -213,6 +219,16 @@
         <script src="{{asset('assets/libs/metismenu/metisMenu.min.js')}}"></script>
         <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
         <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
+
+        <!-- select 2 plugin -->
+        <script src="{{asset('assets/libs/select2/js/select2.min.js')}}"></script>
+
+        <!-- dropzone plugin -->
+        <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
+
+        <!-- init js -->
+        <script src="{{asset('assets/js/pages/ecommerce-select2.init.js')}}"></script>
+      
         <!-- App js -->
         <script src="{{asset('assets/js/app.js')}}"></script>
         <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>

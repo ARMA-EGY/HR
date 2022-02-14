@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Employees\AddRequest;
 use App\Http\Requests\Employees\UpdateRequest;
 use App\Models\Employee;
-use App\Models\WorkAddress;
-use App\Models\User;
+use App\Models\Department;
+use App\Models\Countries;
+// use App\Models\WorkAddress;
+use App\User;
 
 class EmployeesController extends Controller
 {
@@ -58,33 +60,33 @@ class EmployeesController extends Controller
     {
 		$managers       = User::orderBy('id','desc')->get();
         $departments       = Department::orderBy('id','desc')->get();
-        $countries       = Countries::orderBy('id','desc')->get();
-        $employeeWorkAddresses = WorkAddress::orderBy('id','desc')->get();
+        $countries       = Countries::all();
+        // $employeeWorkAddresses = WorkAddress::orderBy('id','desc')->get();
 
         //no models created for this tables
-        $tags       = Tag::orderBy('id','desc')->get();
-        $employeeWorkLocations = EmployeeWorkLocations::orderBy('id','desc')->get();
-        $workingHours = WorkingHours::orderBy('id','desc')->get();
-        $timeZones = TimeZones::orderBy('id','desc')->get();
-        $maritalStatus = MaritalStatus::orderBy('id','desc')->get();
-        $certificateLevel = CertificateLevel::orderBy('id','desc')->get();
-        $employeesTypes = EmployeesTypes::orderBy('id','desc')->get();
+        // $tags       = Tag::orderBy('id','desc')->get();
+        // $employeeWorkLocations = EmployeeWorkLocations::orderBy('id','desc')->get();
+        // $workingHours = WorkingHours::orderBy('id','desc')->get();
+        // $timeZones = TimeZones::orderBy('id','desc')->get();
+        // $maritalStatus = MaritalStatus::orderBy('id','desc')->get();
+        // $certificateLevel = CertificateLevel::orderBy('id','desc')->get();
+        // $employeesTypes = EmployeesTypes::orderBy('id','desc')->get();
         
 
         return view('master.employee.create',[
             'managers' => $managers,
             'departments' => $departments,
             'countries' => $countries,
-            'employeeWorkAddresses' => $employeeWorkAddresses,
+            // 'employeeWorkAddresses' => $employeeWorkAddresses,
 
             //no models created for this tables
-            'tags' => $tags,
-            'employeeWorkLocations' => $employeeWorkLocations,
-            'workingHours' => $workingHours,
-            'timeZones' => $timeZones,
-            'maritalStatus' => $maritalStatus,
-            'certificateLevel' => $certificateLevel,
-            'employeesTypes' => $employeesTypes,
+            // 'tags' => $tags,
+            // 'employeeWorkLocations' => $employeeWorkLocations,
+            // 'workingHours' => $workingHours,
+            // 'timeZones' => $timeZones,
+            // 'maritalStatus' => $maritalStatus,
+            // 'certificateLevel' => $certificateLevel,
+            // 'employeesTypes' => $employeesTypes,
                      
         ]);
     }

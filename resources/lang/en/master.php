@@ -72,4 +72,9 @@ return [
     "TASKS" => "Tasks",
     "PROJECTS" => "Projects",
 
+    "ALL-EMPLOYEES" => "All Employees",
+    "CREATE-EMPLOYEE" => "Create Employee",
+
+    "ALL" => "All",
+
 ];
