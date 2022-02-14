@@ -57,7 +57,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
 
         //EMPLOYEES ROUTES
         Route::resource('/employee', 'EmployeesController');
+
         
+
     });
 
     Route::prefix('leaves')->name('leaves.')->group(function () 
