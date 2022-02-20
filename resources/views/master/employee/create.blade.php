@@ -40,7 +40,12 @@
                     <div class="row">
                         <div class="col-12">
 
-                            <form action="#">
+                        <form action="{{ isset($item) ? route('master.employee.update', $item->id) : route('master.employee.store')  }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        
+                        @if (isset($item))
+                            @method('PUT')
+                        @endif
 
                                 <div class="card card-shadow">
                                     <div class="card-body">
@@ -61,9 +66,10 @@
                                                         <label for="tags" class="col-md-2 col-form-label pb-2 pt-1">Tags</label>
                                                         <div class="col-md-10">
                                                             <select class="select2 form-control select2-multiple" name="tags[]" multiple="multiple" data-placeholder="Choose ...">
-                                                                <option value="One">One</option>
-                                                                <option value="Two">Two</option>
-                                                                <option value="Three">Three</option>
+                                                                @foreach($tags as $tag)
+                                                                <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                                                @endforeach
+                                                                
                                                             </select>
                                                         </div>
                                                     </div>
@@ -82,9 +88,10 @@
                                             <label for="department_id" class="col-md-2 col-form-label pb-2 pt-1">Department</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="department_id" id="department_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                
+                                                @foreach($departments as $department)
+                                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -97,9 +104,10 @@
                                             <label for="manager_id" class="col-md-2 col-form-label pb-2 pt-1">Manager</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="manager_id" id="manager_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                    
+                                                    @foreach($managers as $manager)
+                                                        <option value="{{$manager->id}}">{{$manager->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -112,9 +120,10 @@
                                             <label for="coach_id" class="col-md-2 col-form-label pb-2 pt-1">Coach</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="coach_id" id="coach_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                    
+                                                    @foreach($managers as $manager)
+                                                        <option value="{{$manager->id}}">{{$manager->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -146,17 +155,19 @@
                                                     <label for="work_address_id" class="col-md-2 col-form-label pb-2 pt-1">Work Address</label>
                                                     <div class="col-md-4">
                                                         <select class="form-control form-control-sm select2" name="work_address_id" id="work_address_id">
-                                                            <option>Select</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
+                                                            
+                                                            @foreach($workAddress as $address)
+                                                                <option value="{{$address->id}}">{{$address->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <label for="work_location_id" class="col-md-2 col-form-label pb-2 pt-1">Work Location</label>
                                                     <div class="col-md-4">
                                                         <select class="form-control form-control-sm select2" name="work_location_id" id="work_location_id">
-                                                            <option>Select</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
+                                                            
+                                                            @foreach($workLocations as $workLocation)
+                                                                <option value="{{$workLocation->id}}">{{$workLocation->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -178,15 +189,16 @@
                                                     <label for="working_hour_id" class="col-md-2 col-form-label pb-2 pt-1">Working Hours</label>
                                                     <div class="col-md-4">
                                                         <select class="form-control form-control-sm select2" name="working_hour_id" id="working_hour_id">
-                                                            <option>Select</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
+                                                            
+                                                            @foreach($workingHours as $workingHour)
+                                                                <option value="{{$workingHour->id}}">{{$workingHour->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <label for="time_zone_id" class="col-md-2 col-form-label pb-2 pt-1">Timezone</label>
                                                     <div class="col-md-4">
                                                         <select class="form-control form-control-sm select2" name="time_zone_id" id="time_zone_id">
-                                                            <option>Select</option>
+                                                            
                                                             <option value="1">1</option>
                                                             <option value="2">2</option>
                                                         </select>
@@ -217,7 +229,7 @@
                                                             <label for="address_id" class="col-md-4 col-form-label pb-2 pt-1">Address</label>
                                                             <div class="col-md-8">
                                                                 <select class="form-control form-control-sm select2" name="address_id" id="address_id">
-                                                                    <option>Select</option>
+                                                                    
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
                                                                 </select>
@@ -239,9 +251,10 @@
                                                             <label for="language_id" class="col-md-4 col-form-label pb-2 pt-1">Language</label>
                                                             <div class="col-md-8">
                                                                 <select class="form-control form-control-sm select2" name="language_id" id="language_id">
-                                                                    <option>Select</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
+                                                                                                                           
+                                                                    @foreach($languages as $language)
+                                                                        <option value="{{$language->id}}">{{$language->name}}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -259,9 +272,10 @@
                                                             <label for="nationality_id" class="col-md-4 col-form-label pb-2 pt-1">Nationality</label>
                                                             <div class="col-md-8">
                                                                 <select class="form-control form-control-sm select2" name="nationality_id" id="nationality_id">
-                                                                    <option>Select</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
+                                                                    
+                                                                    @foreach($countries as $country)
+                                                                        <option value="{{$country->id}}">{{$country->country_Nationality}}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -281,9 +295,9 @@
                                                             <label for="gender" class="col-md-4 col-form-label pb-2 pt-1">Gender</label>
                                                             <div class="col-md-8">
                                                                 <select class="form-control form-control-sm select2" name="gender" id="gender">
-                                                                    <option>Select</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
+                                                                    
+                                                                    <option value="male">Male</option>
+                                                                    <option value="female">Female</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -302,7 +316,12 @@
                                                         <div class="row">
                                                             <label for="countryofbirth_id" class="col-md-4 col-form-label pb-2 pt-1">Country of Birth</label>
                                                             <div class="col-md-8">
-                                                                <input class="form-control form-control-sm" type="text" name="countryofbirth_id" id="countryofbirth_id">
+                                                            <select class="form-control form-control-sm select2" name="countryofbirth_id" id="countryofbirth_id">
+                                                                
+                                                                @foreach($countries as $country)
+                                                                    <option value="{{$country->id}}">{{$country->country_Name}}</option>
+                                                                @endforeach
+                                                            </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -313,9 +332,10 @@
                                                             <label for="maritalstatus_id" class="col-md-4 col-form-label pb-2 pt-1">Marital Status</label>
                                                             <div class="col-md-8">
                                                                 <select class="form-control form-control-sm select2" name="maritalstatus_id" id="maritalstatus_id">
-                                                                    <option>Select</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
+                                                                    
+                                                                    @foreach($maritalStatuses as $maritalStatus)
+                                                                        <option value="{{$maritalStatus->id}}">{{$maritalStatus->name}}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -392,7 +412,12 @@
                                                         <div class="row">
                                                             <label for="certificate_level_id" class="col-md-4 col-form-label pb-2 pt-1">Certificate Level</label>
                                                             <div class="col-md-8">
-                                                                <input class="form-control form-control-sm" type="text" name="certificate_level_id" id="certificate_level_id">
+                                                            <select class="form-control form-control-sm select2" name="certificate_level_id" id="certificate_level_id">
+                                                                
+                                                                @foreach($certificateLevels as $certificateLevel)
+                                                                    <option value="{{$certificateLevel->id}}">{{$certificateLevel->name}}</option>
+                                                                @endforeach
+                                                            </select>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -422,9 +447,10 @@
                                                             <label for="type_id" class="col-md-4 col-form-label pb-2 pt-1">Employee Type</label>
                                                             <div class="col-md-8">
                                                                 <select class="form-control form-control-sm select2" name="type_id" id="type_id">
-                                                                    <option>Select</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
+                                                                    
+                                                                    @foreach($employeesTypes as $employeesType)
+                                                                        <option value="{{$employeesType->id}}">{{$employeesType->name}}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
