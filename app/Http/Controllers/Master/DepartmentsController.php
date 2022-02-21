@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Department\AddRequest;
 use App\Http\Requests\Department\UpdateRequest;
 use App\Models\Department;
-use App\Models\User;
+use App\User;
 
 class DepartmentsController extends Controller
 {

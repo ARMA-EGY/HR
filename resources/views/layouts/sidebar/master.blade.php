@@ -25,7 +25,8 @@
                         <span >{{__('master.DEPARTMENTS')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="#"><i class="bx bx-disc fs-16"></i> Link</a></li>
+                        <li class=" {{request()->routeIs('master.department.index') ? 'mm-active' : '' }}"><a href="{{route('master.department.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-DEPARTMENTS')}}</a></li>
+                        <li class=" {{request()->routeIs('master.department.create') ? 'mm-active' : '' }}"><a href="{{route('master.department.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-DEPARTMENT')}}</a></li>
                     </ul>
                 </li>
 
@@ -55,7 +56,8 @@
                         <span >{{__('master.CONTRACTS')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="#"><i class="bx bx-disc fs-16"></i> Link</a></li>
+                        <li class=" {{request()->routeIs('master.contract.index') ? 'mm-active' : '' }}"><a href="{{route('master.contract.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-CONTRACTS')}}</a></li>
+                        <li class=" {{request()->routeIs('master.contract.create') ? 'mm-active' : '' }}"><a href="{{route('master.contract.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-CONTRACT')}}</a></li>
                     </ul>
                 </li>
 

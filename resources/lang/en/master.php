@@ -75,6 +75,12 @@ return [
     "ALL-EMPLOYEES" => "All Employees",
     "CREATE-EMPLOYEE" => "Create Employee",
 
+    "ALL-DEPARTMENTS" => "All Departments",
+    "CREATE-DEPARTMENT" => "Create Department",
+
+    "ALL-CONTRACTS" => "All Contracts",
+    "CREATE-CONTRACT" => "Create Contract",
+
     "ALL" => "All",
 
 ];

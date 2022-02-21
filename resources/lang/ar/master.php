@@ -77,6 +77,12 @@ return [
     "ALL-EMPLOYEES" => "جميع الموظفون",
     "CREATE-EMPLOYEE" => "اضافة موظف",
 
+    "ALL-DEPARTMENTS" => "جميع الاقسام",
+    "CREATE-DEPARTMENT" => "انشاء قسم",
+
+    "ALL-CONTRACTS" => "جميع العقود",
+    "CREATE-CONTRACT" => "انشاء عقد",
+
     "ALL" => "الجميع",
 
 ];
