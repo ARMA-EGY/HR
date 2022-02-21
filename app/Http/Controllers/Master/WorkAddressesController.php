@@ -47,44 +47,34 @@ class WorkAddressesController extends Controller
     public function show(WorkAddress $workAddress)
     {
         return view('master.workaddress.show',[
-            'contract' => $contract,
-        ]);
-    }  
-
-
-    public function showall(WorkAddress $workAddress)
-    {
-        return view('master.workaddress.show',[
             'workAddress' => $workAddress,
         ]);
     }  
-    
 
 
     //-------------- Create New Data ---------------\\
 
     public function create()
     {
-		$employees       = User::orderBy('id','desc')->get();
-        $departments       = Department::orderBy('id','desc')->get();
-        $countries       = Countries::orderBy('id','desc')->get();
+        $countries     = Countries::orderBy('id','desc')->get();
 
-        $salaryStructureType       = SalaryStructureType::orderBy('id','desc')->get();
-        $workingHours = WorkingHours::orderBy('id','desc')->get();
-        $jobPositions = JobPositions::orderBy('id','desc')->get();
-        $contractTypes = ContractTypes::orderBy('id','desc')->get();
+        //no models created for this tables
+        // $address_type  = AddressType::orderBy('id','desc')->get();
+        // $title         = Title::orderBy('id','desc')->get();
+        // $tags          = Tag::orderBy('id','desc')->get();
         
 
-        return view('master.contract.create',[
-            'managers' => $employees,
-            'departments' => $departments,
+        $workAddressForm = view('master.workaddress.create',[
             'countries' => $countries,
 
-            'salaryStructureType' => $salaryStructureType,
-            'workingHours' => $workingHours,
-            'jobPositions' => $jobPositions,
-            'contractTypes' => $contractTypes, 
-        ]);
+            //no models created for this tables
+            // 'address_type' => $address_type,
+            // 'title' => $title,
+            // 'tags' => $tags,
+        ])->render();
+
+        $rsData = $this->returnData('workAddressForm', $workAddressForm);
+        return response()->json($rsData, 200);
     }
 
 
@@ -92,82 +82,87 @@ class WorkAddressesController extends Controller
 
     public function store(AddRequest $request)
     {
-        $contract =  Contract::create([
-            'reference' => $request->reference,
-            'employee_id' => $request->employee_id,
-            'contract_start_date' => $request->contract_start_date,
-            'contract_end_date' => $request->contract_end_date,
-            'salary_structure_type_id' => $request->salary_structure_type_id,
-
-            'working_hour_id' => $request->working_hour_id,
-            'department_id' => $request->department_id,
-            'job_position_id' => $request->job_position_id,
-            'contract_type_id' => $request->contract_type_id,
-            'hr_responsible_id' => $request->hr_responsible_id,
-
-            'notes' => $request->notes,
-            'wage' => $request->wage,
-            'status_id' => $request->status_id,
+        $workAddress =  WorkAddress::create([
+            'individual_company' => $request->individual_company,
+            'name' => $request->name,
+            'address_type_id' => $request->address_type_id,
+            'street' => $request->street,
+            'street2' => $request->street2,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip' => $request->zip,
+            'country_id' => $request->country_id,
+            'tax_id' => $request->tax_id,
+            'job_position' => $request->job_position,
+            'phone' => $request->phone,
+            'mobile' => $request->mobile,
+            'email' => $request->email,
+            'website' => $request->website,
+            'title_id' => $request->title_id,
+            'tag_id' => $request->tag_id,
             
         ]);
         
-        $request->session()->flash('success', 'Contract created successfully');
-        
-        return redirect(route('master.contract.index'));
+
+        $rsData = $this->returnData('workAddress', $workAddress,'Address created successfully');
+
+        return response()->json($rsData, 200);
     }
 
 
     //-------------- Edit Data Page ---------------\\
     
-    public function edit(Contract $contract)
+    public function edit(WorkAddress $workAddress)
     {
-		$employees       = User::orderBy('id','desc')->get();
-        $departments       = Department::orderBy('id','desc')->get();
-        $countries       = Countries::orderBy('id','desc')->get();
+        $countries     = Countries::orderBy('id','desc')->get();
 
-        $salaryStructureType       = SalaryStructureType::orderBy('id','desc')->get();
-        $workingHours = WorkingHours::orderBy('id','desc')->get();
-        $jobPositions = JobPositions::orderBy('id','desc')->get();
-        $contractTypes = ContractTypes::orderBy('id','desc')->get();
+        //no models created for this tables
+        // $address_type  = AddressType::orderBy('id','desc')->get();
+        // $title         = Title::orderBy('id','desc')->get();
+        // $tags          = Tag::orderBy('id','desc')->get();
 
-		return view('master.employee.create', [
-            'managers' => $employees,
-            'departments' => $departments,
+		$workAddressForm = view('master.workaddress.create', [
+            'workAddress' => $workAddress,
             'countries' => $countries,
 
-            'salaryStructureType' => $salaryStructureType,
-            'workingHours' => $workingHours,
-            'jobPositions' => $jobPositions,
-            'contractTypes' => $contractTypes, 
-            ]);
+            //no models created for this tables
+            // 'address_type' => $address_type,
+            // 'title' => $title,
+            // 'tags' => $tags,
+        ])->render();
+
+        $rsData = $this->returnData('workAddressForm', $workAddressForm);
+        return response()->json($rsData, 200);
     }
 
     
     //-------------- Update Data  ---------------\\
 
-    public function update(UpdateRequest $request, Contract $contract)
+    public function update(UpdateRequest $request, WorkAddress $workAddress)
     {
-
-        $contract->update([
-            'reference' => $request->reference,
-            'employee_id' => $request->employee_id,
-            'contract_start_date' => $request->contract_start_date,
-            'contract_end_date' => $request->contract_end_date,
-            'salary_structure_type_id' => $request->salary_structure_type_id,
-
-            'working_hour_id' => $request->working_hour_id,
-            'department_id' => $request->department_id,
-            'job_position_id' => $request->job_position_id,
-            'contract_type_id' => $request->contract_type_id,
-            'hr_responsible_id' => $request->hr_responsible_id,
-
-            'notes' => $request->notes,
-            'wage' => $request->wage,
-            'status_id' => $request->status_id,
+        $workAddress->update([
+            'individual_company' => $request->individual_company,
+            'name' => $request->name,
+            'address_type_id' => $request->address_type_id,
+            'street' => $request->street,
+            'street2' => $request->street2,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip' => $request->zip,
+            'country_id' => $request->country_id,
+            'tax_id' => $request->tax_id,
+            'job_position' => $request->job_position,
+            'phone' => $request->phone,
+            'mobile' => $request->mobile,
+            'email' => $request->email,
+            'website' => $request->website,
+            'title_id' => $request->title_id,
+            'tag_id' => $request->tag_id,
         ]);
 		
-		session()->flash('success', 'Contract updated successfully');
-		
-		return redirect(route('master.contract.index'));
+
+        $rsData = $this->returnData('workAddress', $workAddress,'Address updated successfully');
+          
+        return response()->json($rsData, 200);
     }
 }

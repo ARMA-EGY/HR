@@ -9,7 +9,16 @@ use App\Http\Requests\Employees\UpdateRequest;
 use App\Models\Employee;
 use App\Models\Department;
 use App\Models\Countries;
-// use App\Models\WorkAddress;
+use App\Models\WorkAddress;
+use App\Models\Tag;
+use App\Models\WorkLocation;
+use App\Models\WorkingHours;
+use App\Models\MaritalStatus;
+use App\Models\CertificateLevel;
+use App\Models\EmployeesTypes;
+use App\Models\Language;
+
+
 use App\User;
 
 class EmployeesController extends Controller
@@ -58,43 +67,38 @@ class EmployeesController extends Controller
 
     public function create()
     {
-		$managers       = User::orderBy('id','desc')->get();
+		$managers       = Employee::orderBy('id','desc')->get();
         $departments       = Department::orderBy('id','desc')->get();
         $countries       = Countries::all();
-        // $employeeWorkAddresses = WorkAddress::orderBy('id','desc')->get();
+        $workAddress = WorkAddress::orderBy('id','desc')->get();
+        $tags       = Tag::orderBy('id','desc')->get();
+        $workLocations = WorkLocation::orderBy('id','desc')->get();
+        $workingHours = WorkingHours::orderBy('id','desc')->get();
+        $maritalStatuses = MaritalStatus::orderBy('id','desc')->get();
+        $certificateLevels = CertificateLevel::orderBy('id','desc')->get();
+        $employeesTypes = EmployeesTypes::orderBy('id','desc')->get();
+        $languages = Language::orderBy('id','desc')->get();
 
-        //no models created for this tables
-        // $tags       = Tag::orderBy('id','desc')->get();
-        // $employeeWorkLocations = EmployeeWorkLocations::orderBy('id','desc')->get();
-        // $workingHours = WorkingHours::orderBy('id','desc')->get();
-        // $timeZones = TimeZones::orderBy('id','desc')->get();
-        // $maritalStatus = MaritalStatus::orderBy('id','desc')->get();
-        // $certificateLevel = CertificateLevel::orderBy('id','desc')->get();
-        // $employeesTypes = EmployeesTypes::orderBy('id','desc')->get();
-        
 
         return view('master.employee.create',[
             'managers' => $managers,
             'departments' => $departments,
             'countries' => $countries,
-            // 'employeeWorkAddresses' => $employeeWorkAddresses,
-
-            //no models created for this tables
-            // 'tags' => $tags,
-            // 'employeeWorkLocations' => $employeeWorkLocations,
-            // 'workingHours' => $workingHours,
-            // 'timeZones' => $timeZones,
-            // 'maritalStatus' => $maritalStatus,
-            // 'certificateLevel' => $certificateLevel,
-            // 'employeesTypes' => $employeesTypes,
-                     
+            'workAddress' => $workAddress,
+            'tags' => $tags,
+            'workLocations' => $workLocations,
+            'workingHours' => $workingHours,
+            'maritalStatuses' => $maritalStatuses,
+            'certificateLevels' => $certificateLevels,
+            'employeesTypes' => $employeesTypes,
+            'languages' => $languages,           
         ]);
     }
 
 
     //-------------- Store New Data ---------------\\
 
-    public function store(AddRequest $request)
+    public function store(Request $request)
     {
         $employee =  Employee::create([
             'name' => $request->name,
@@ -110,7 +114,6 @@ class EmployeesController extends Controller
             'work_location_id' => $request->work_location_id,
 
             'working_hour_id' => $request->working_hour_id,
-            'time_zone_id' => $request->time_zone_id,
             'address_id' => $request->address_id,
             'language_id' => $request->language_id,
             'home_work_distance' => $request->home_work_distance,
@@ -120,7 +123,7 @@ class EmployeesController extends Controller
             'passport' => $request->passport,
             'gender' => $request->gender,
             'dateofbirth' => $request->dateofbirth,
-
+            'placeofbirth' => $request->placeofbirth,
             'countryofbirth_id' => $request->countryofbirth_id,
             'maritalstatus_id' => $request->maritalstatus_id,
             'no_ofchildren' => $request->no_ofchildren,
@@ -138,7 +141,7 @@ class EmployeesController extends Controller
             'type_id' => $request->type_id,
             
         ]);
-        
+        //dd($employee);
         $request->session()->flash('success', 'Employee created successfully');
         
         return redirect(route('master.employee.index'));
@@ -153,13 +156,10 @@ class EmployeesController extends Controller
         $departments       = Department::orderBy('id','desc')->get();
         $countries       = Countries::orderBy('id','desc')->get();
         $employeeWorkAddresses = WorkAddress::orderBy('id','desc')->get();
-
-        //no models created for this tables
         $tags       = Tag::orderBy('id','desc')->get();
         $employeeWorkLocations = EmployeeWorkLocations::orderBy('id','desc')->get();
         $workingHours = WorkingHours::orderBy('id','desc')->get();
-        $timeZones = TimeZones::orderBy('id','desc')->get();
-        $maritalStatus = MaritalStatus::orderBy('id','desc')->get();
+        $maritalStatuses = MaritalStatus::orderBy('id','desc')->get();
         $certificateLevel = CertificateLevel::orderBy('id','desc')->get();
         $employeesTypes = EmployeesTypes::orderBy('id','desc')->get();
 
@@ -169,14 +169,11 @@ class EmployeesController extends Controller
             'departments' => $departments,
             'countries' => $countries,
             'employeeWorkAddresses' => $employeeWorkAddresses,
-
-            //no models created for this tables
             'tags' => $tags,
             'employeeWorkLocations' => $employeeWorkLocations,
             'workingHours' => $workingHours,
-            'timeZones' => $timeZones,
-            'maritalStatus' => $maritalStatus,
-            'certificateLevel' => $certificateLevel,
+            'maritalStatuses' => $maritalStatuses,
+            'certificateLevels' => $certificateLevels,
             'employeesTypes' => $employeesTypes,
             ]);
     }
