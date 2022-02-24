@@ -5,7 +5,7 @@
 @endsection
 
 @section('style')
-
+    <link href="{{asset('assets/css/trix.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 
@@ -44,9 +44,6 @@
 
                                 <div class="card card-shadow">
                                     <div class="card-body">
-        
-                                        <h4 class="card-title">Basic Information</h4>
-                                        <p class="card-title-desc">Fill all information below</p>
 
                                         <div class="row">
                                             <label for="department_name" class="col-md-2 col-form-label pb-2 pt-1">Department Name</label>
@@ -72,8 +69,37 @@
                                                     <option value="2">2</option>
                                                 </select>
                                             </div>
+                                            <label for="custom_appraisal" class="col-md-2 col-form-label pb-2 pt-1">Custom Appraisal</label>
+                                            <div class="col-md-4">
+                                                <select class="form-control form-control-sm custom_appraisal" name="custom_appraisal" id="custom_appraisal">
+                                                    <option value="0">No</option>
+                                                    <option value="1">Yes</option>
+                                                </select>
+                                            </div>
                                         </div>
         
+                                    </div>
+                                </div>
+                                
+                                <div class="card card-shadow appraisal_box">
+                                    <div class="card-body">
+                                        <p class="card-title-desc horizontal_separator text-sm">Appraisal Templates</p>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4 class="card-title">Employee</h4>
+                                                        <input id="e" type="hidden" name="employee_appraisal_template" >
+                                                        <trix-editor input="e"></trix-editor>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <h4 class="card-title">Manager</h4>
+                                                        <input id="m" type="hidden" name="manager_appraisal_template" >
+                                                        <trix-editor input="m"></trix-editor>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
         
@@ -104,12 +130,31 @@
 
 @section('script')
 
+<script src="{{asset('assets/js/trix.min.js')}}"></script>
+
 <script>
-    $('#myTab a').on('click', function (event) 
+
+    $(document).on("change",".custom_appraisal", function()
     {
-        event.preventDefault()
-        $(this).tab('show')
-    })
+        if ($(this).val() == 1)
+        {
+            $('.appraisal_box').slideDown()
+        }
+        else
+        {
+            $('.appraisal_box').slideUp()
+        }
+    });
+
+    if ($('.custom_appraisal').val() == 1)
+    {
+        $('.appraisal_box').slideDown()
+    }
+    else
+    {
+        $('.appraisal_box').slideUp()
+    }
+
 </script>
 
 @endsection

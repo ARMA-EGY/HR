@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Employees\AddRequest;
-use App\Http\Requests\Employees\UpdateRequest;
+use App\Http\Requests\Contract\AddRequest;
+use App\Http\Requests\Contract\UpdateRequest;
 use App\Models\Employee;
 use App\Models\Contract;
-use App\Models\User;
+use App\Models\Department;
+use App\Models\Countries;
+use App\User;
 
 class ContractsController extends Controller
 {
@@ -66,23 +68,12 @@ class ContractsController extends Controller
     {
 		$employees       = User::orderBy('id','desc')->get();
         $departments       = Department::orderBy('id','desc')->get();
-        $countries       = Countries::orderBy('id','desc')->get();
-
-        $salaryStructureType       = SalaryStructureType::orderBy('id','desc')->get();
-        $workingHours = WorkingHours::orderBy('id','desc')->get();
-        $jobPositions = JobPositions::orderBy('id','desc')->get();
-        $contractTypes = ContractTypes::orderBy('id','desc')->get();
+        $countries       = Countries::all();
         
 
         return view('master.contract.create',[
             'managers' => $employees,
             'departments' => $departments,
-            'countries' => $countries,
-
-            'salaryStructureType' => $salaryStructureType,
-            'workingHours' => $workingHours,
-            'jobPositions' => $jobPositions,
-            'contractTypes' => $contractTypes, 
         ]);
     }
 

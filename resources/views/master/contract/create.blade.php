@@ -42,20 +42,53 @@
 
                             <form action="#">
 
-                                <div class="card card-shadow">
+                                <ul class="nav nav-pills mb-3 mx-auto contract-status" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="pills-new-tab" data-bs-toggle="pill" data-bs-target="#pills-new" type="button" role="tab" aria-controls="pills-new" aria-selected="true">New</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-running-tab" data-bs-toggle="pill" data-bs-target="#pills-running" type="button" role="tab" aria-controls="pills-running" aria-selected="false">Running</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-expired-tab" data-bs-toggle="pill" data-bs-target="#pills-expired" type="button" role="tab" aria-controls="pills-expired" aria-selected="false">Expired</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false">Cancelled</button>
+                                    </li>
+                                </ul>
+
+                                <div class="card card-shadow mb-2">
                                     <div class="card-body">
-        
-                                        <h4 class="card-title">Basic Information</h4>
-                                        <p class="card-title-desc">Fill all information below</p>
                                             
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <div class="mb-1">
+                                            <div class="col-sm-8 col-10">
+                                                <div class="mb-4">
                                                     <input id="contract_reference" name="contract_reference" type="text" placeholder="Contract Reference" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
-                                                
+                                            <div class="col-sm-4 col-2">
+                                                <div class="dropdown d-inline-block">
+                                                    <button type="button" class="btn header-item waves-effect h-30" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <div id="status-circle" class="align-middle status-circle bg-success"></div>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <!-- item-->
+                                                        <div class="dropdown-item pointer select-status" data-status="bg-danger">
+                                                            <div class="align-middle status-circle bg-danger"></div>
+                                                            <span class="align-middle">Red</span>
+                                                        </div>
+                                                        <!-- item-->
+                                                        <div class="dropdown-item pointer select-status" data-status="bg-success">
+                                                            <div class="align-middle status-circle bg-success"></div>
+                                                            <span class="align-middle">Green</span>
+                                                        </div>
+                                                        <!-- item-->
+                                                        <div class="dropdown-item pointer select-status" data-status="bg-secondary">
+                                                            <div class="align-middle status-circle bg-secondary"></div>
+                                                            <span class="align-middle">Grey</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -161,8 +194,8 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row">
-                                                            <div class="col-md-8">
-                                                                <textarea class="form-control" name="notes" id="" cols="30" rows="10"></textarea>
+                                                            <div class="col-md-12">
+                                                                <textarea class="form-control" name="notes" rows="5"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -171,28 +204,12 @@
                                             </div>
 
                                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
-                                                <p class="card-title-desc horizontal_separator mt-4 text-sm">Planning</p>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <p class="card-title-desc horizontal_separator mt-4 text-sm">Status</p>
-                                                        <div class="row">
-                                                            <label for="type_id" class="col-md-4 col-form-label pb-2 pt-1">Employee Type</label>
-                                                            <div class="col-md-8">
-                                                                <select class="form-control form-control-sm select2" name="type_id" id="type_id">
-                                                                    <option>Select</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <label for="related_user" class="col-md-4 col-form-label pb-2 pt-1">Related User</label>
-                                                            <div class="col-md-8">
-                                                                <input class="form-control form-control-sm" type="text" name="related_user" id="related_user">
-                                                            </div>
-                                                        </div>
+                                                <div class="row mt-4">
+                                                    <label for="wage" class="col-md-2 col-3 col-form-label pt-1">Wage</label>
+                                                    <div class="col-md-4 col-6">
+                                                        <input class="form-control form-control-sm" type="number" step="0.01" placeholder="0.00" name="wage" id="wage">
                                                     </div>
+                                                    <label for="wage" class="col-md-3 col-3 text-sm pt-1">/ Month</label>
                                                 </div>
                                             </div>
 
@@ -232,6 +249,12 @@
     {
         event.preventDefault()
         $(this).tab('show')
+    })
+
+    $('.select-status').on('click', function () 
+    {
+       var status = $(this).attr('data-status');
+       $('#status-circle').removeClass('bg-success bg-danger bg-secondary').addClass(status);
     })
 </script>
 

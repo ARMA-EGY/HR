@@ -47,7 +47,7 @@
                             @method('PUT')
                         @endif
 
-                                <div class="card card-shadow">
+                                <div class="card card-shadow mb-2">
                                     <div class="card-body">
         
                                         <h4 class="card-title">Basic Information</h4>
