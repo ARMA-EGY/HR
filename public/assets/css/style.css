@@ -94,3 +94,33 @@
 {
     height: 27px;
 }
+
+.h-30
+{
+    height: 30px;
+}
+
+.status-circle
+{
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    padding-top: 5px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.pointer
+{
+    cursor: pointer;
+}
+
+.contract-status
+{
+    justify-content: center;
+    background: #fff;
+    border: 1px solid #ccc;
+    /* padding: 0px 50px; */
+    width: fit-content;
+    border-radius: 10px;
+}
