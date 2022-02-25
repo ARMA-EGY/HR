@@ -10,6 +10,9 @@ use App\Models\Employee;
 use App\Models\Contract;
 use App\Models\WorkAddress;
 use App\Models\User;
+use App\Models\AddressType;
+use App\Models\Title;
+use App\Models\Tag;
 
 class WorkAddressesController extends Controller
 {
@@ -57,20 +60,16 @@ class WorkAddressesController extends Controller
     public function create()
     {
         $countries     = Countries::orderBy('id','desc')->get();
-
-        //no models created for this tables
-        // $address_type  = AddressType::orderBy('id','desc')->get();
-        // $title         = Title::orderBy('id','desc')->get();
-        // $tags          = Tag::orderBy('id','desc')->get();
+        $address_type  = AddressType::orderBy('id','desc')->get();
+        $title         = Title::orderBy('id','desc')->get();
+        $tags          = Tag::orderBy('id','desc')->get();
         
 
         $workAddressForm = view('master.workaddress.create',[
             'countries' => $countries,
-
-            //no models created for this tables
-            // 'address_type' => $address_type,
-            // 'title' => $title,
-            // 'tags' => $tags,
+            'address_type' => $address_type,
+            'title' => $title,
+            'tags' => $tags,
         ])->render();
 
         $rsData = $this->returnData('workAddressForm', $workAddressForm);
@@ -80,7 +79,7 @@ class WorkAddressesController extends Controller
 
     //-------------- Store New Data ---------------\\
 
-    public function store(AddRequest $request)
+    public function store(Request $request)
     {
         $workAddress =  WorkAddress::create([
             'individual_company' => $request->individual_company,
@@ -115,20 +114,16 @@ class WorkAddressesController extends Controller
     public function edit(WorkAddress $workAddress)
     {
         $countries     = Countries::orderBy('id','desc')->get();
-
-        //no models created for this tables
-        // $address_type  = AddressType::orderBy('id','desc')->get();
-        // $title         = Title::orderBy('id','desc')->get();
-        // $tags          = Tag::orderBy('id','desc')->get();
+        $address_type  = AddressType::orderBy('id','desc')->get();
+        $title         = Title::orderBy('id','desc')->get();
+        $tags          = Tag::orderBy('id','desc')->get();
 
 		$workAddressForm = view('master.workaddress.create', [
             'workAddress' => $workAddress,
             'countries' => $countries,
-
-            //no models created for this tables
-            // 'address_type' => $address_type,
-            // 'title' => $title,
-            // 'tags' => $tags,
+             'address_type' => $address_type,
+             'title' => $title,
+             'tags' => $tags,
         ])->render();
 
         $rsData = $this->returnData('workAddressForm', $workAddressForm);
@@ -138,7 +133,7 @@ class WorkAddressesController extends Controller
     
     //-------------- Update Data  ---------------\\
 
-    public function update(UpdateRequest $request, WorkAddress $workAddress)
+    public function update(Request $request, WorkAddress $workAddress)
     {
         $workAddress->update([
             'individual_company' => $request->individual_company,
