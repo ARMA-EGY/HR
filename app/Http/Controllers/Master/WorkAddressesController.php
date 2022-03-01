@@ -160,4 +160,15 @@ class WorkAddressesController extends Controller
           
         return response()->json($rsData, 200);
     }
+
+    
+    //-------------- Get Data  ---------------\\
+
+    public function get(Request $request)
+    {
+        
+        return view('master.components.workAddress',[
+
+        ]);
+    }
 }

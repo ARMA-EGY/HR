@@ -88,10 +88,9 @@
                                             <label for="department_id" class="col-md-2 col-form-label pb-2 pt-1">Department</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="department_id" id="department_id">
-                                                
-                                                @foreach($departments as $department)
-                                                    <option value="{{$department->id}}">{{$department->name}}</option>
-                                                @endforeach
+                                                    @foreach($departments as $department)
+                                                        <option value="{{$department->id}}">{{$department->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -154,8 +153,8 @@
                                                 <div class="row">
                                                     <label for="work_address_id" class="col-md-2 col-form-label pb-2 pt-1">Work Address</label>
                                                     <div class="col-md-4">
+                                                        <i class="bx bx-link-external text-primary pointer external-link" data-link="{{route('master.getWorkAddress')}}" data-select="#work_address_id"></i>
                                                         <select class="form-control form-control-sm select2" name="work_address_id" id="work_address_id">
-                                                            
                                                             @foreach($workAddress as $address)
                                                                 <option value="{{$address->id}}">{{$address->name}}</option>
                                                             @endforeach
@@ -163,8 +162,8 @@
                                                     </div>
                                                     <label for="work_location_id" class="col-md-2 col-form-label pb-2 pt-1">Work Location</label>
                                                     <div class="col-md-4">
+                                                        <i class="bx bx-link-external text-primary pointer external-link" data-link="{{route('master.getWorkLocation')}}" data-select="#work_location_id"></i>
                                                         <select class="form-control form-control-sm select2" name="work_location_id" id="work_location_id">
-                                                            
                                                             @foreach($workLocations as $workLocation)
                                                                 <option value="{{$workLocation->id}}">{{$workLocation->name}}</option>
                                                             @endforeach
@@ -188,18 +187,12 @@
                                                 <div class="row">
                                                     <label for="working_hour_id" class="col-md-2 col-form-label pb-2 pt-1">Working Hours</label>
                                                     <div class="col-md-4">
-                                                        <select class="form-control form-control-sm select2" name="working_hour_id" id="working_hour_id">      
+                                                        <i class="bx bx-link-external text-primary pointer external-link" data-link="{{route('master.getWorkingHours')}}" data-select="#working_hour_id"></i>
+                                                        <select class="form-control form-control-sm select2" name="working_hour_id" id="working_hour_id">
+                                                            
                                                             @foreach($workingHours as $workingHour)
                                                                 <option value="{{$workingHour->id}}">{{$workingHour->name}}</option>
                                                             @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <label for="time_zone_id" class="col-md-2 col-form-label pb-2 pt-1">Timezone</label>
-                                                    <div class="col-md-4">
-                                                        <select class="form-control form-control-sm select2" name="time_zone_id" id="time_zone_id">
-                                                            
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -227,8 +220,8 @@
                                                         <div class="row">
                                                             <label for="address_id" class="col-md-4 col-form-label pb-2 pt-1">Address</label>
                                                             <div class="col-md-8">
+                                                                <i class="bx bx-link-external text-primary pointer external-link" data-link="{{route('master.getAddress')}}" data-select="#address_id"></i>
                                                                 <select class="form-control form-control-sm select2" name="address_id" id="address_id">
-                                                                    
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
                                                                 </select>
@@ -393,12 +386,6 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <label for="work_permit_expire_date" class="col-md-4 col-form-label pb-2 pt-1">Work Permit Expiration Date</label>
-                                                            <div class="col-md-8">
-                                                                <input class="form-control form-control-sm" type="date" name="work_permit_expire_date" id="work_permit_expire_date">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
                                                             <label for="work_permit" class="col-md-4 col-form-label pb-2 pt-1">Work Permit</label>
                                                             <div class="col-md-8">
                                                                 <input class="form-control form-control-sm" type="file" name="work_permit" id="work_permit">
@@ -488,6 +475,7 @@
                                                         <div class="row">
                                                             <label for="payroll_job_position" class="col-md-4 col-form-label pb-2 pt-1">Job Position</label>
                                                             <div class="col-md-8">
+                                                                <i class="bx bx-link-external text-primary pointer external-link" data-link="{{route('master.getJobPosition')}}" data-select="#payroll_job_position"></i>
                                                                 <input class="form-control form-control-sm" type="text" name="payroll_job_position" id="payroll_job_position">
                                                             </div>
                                                         </div>
@@ -543,6 +531,31 @@
         event.preventDefault()
         $(this).tab('show')
     })
+
+    // =============  Show External Links =============
+    $(document).on('click', '.external-link', function()
+    {
+        var loader 	    = $('#loader2').attr('data-load');
+        var link 	    = $(this).attr('data-link');
+        var select 	    = $(this).attr('data-select');
+        var value 	    = $(select).val();
+        
+        $('#modal_body').html(loader);
+        $('#popup').modal('show');
+
+        $.ajax({
+            url: 		link,
+            method: 	'POST',
+            dataType: 	'text',
+            data:       {id: value},
+            success : function(response)
+            {
+                $('#modal_body').html(response);
+            }
+        });
+
+    });
+
 </script>
 
 @endsection
