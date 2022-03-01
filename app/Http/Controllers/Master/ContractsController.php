@@ -10,6 +10,10 @@ use App\Models\Employee;
 use App\Models\Contract;
 use App\Models\Department;
 use App\Models\Countries;
+use App\Models\SalaryStructureType;
+use App\Models\WorkingHours;
+use App\Models\JobPositions;
+use App\Models\ContractTypes;
 use App\User;
 
 class ContractsController extends Controller
@@ -66,21 +70,29 @@ class ContractsController extends Controller
 
     public function create()
     {
-		$employees       = User::orderBy('id','desc')->get();
-        $departments       = Department::orderBy('id','desc')->get();
-        $countries       = Countries::all();
+		$employees            = User::orderBy('id','desc')->get();
+        $departments          = Department::orderBy('id','desc')->get();
+        $salaryStructureTypes = SalaryStructureType::orderBy('id','desc')->get();
+        $workingHours         = WorkingHours::orderBy('id','desc')->get();
+        $jobPositions         = JobPositions::orderBy('id','desc')->get();
+        $contractTypes        = ContractTypes::orderBy('id','desc')->get();
+        $countries            = Countries::all();
         
 
         return view('master.contract.create',[
-            'managers' => $employees,
+            'employees' => $employees,
             'departments' => $departments,
+            'salaryStructureTypes' => $salaryStructureTypes,
+            'workingHours' => $workingHours,
+            'jobPositions' => $jobPositions,
+            'contractTypes' => $contractTypes,
         ]);
     }
 
 
     //-------------- Store New Data ---------------\\
 
-    public function store(AddRequest $request)
+    public function store(Request $request)
     {
         $contract =  Contract::create([
             'reference' => $request->reference,
@@ -135,7 +147,7 @@ class ContractsController extends Controller
     
     //-------------- Update Data  ---------------\\
 
-    public function update(UpdateRequest $request, Contract $contract)
+    public function update(Request $request, Contract $contract)
     {
 
         $contract->update([

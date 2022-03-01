@@ -188,8 +188,7 @@
                                                 <div class="row">
                                                     <label for="working_hour_id" class="col-md-2 col-form-label pb-2 pt-1">Working Hours</label>
                                                     <div class="col-md-4">
-                                                        <select class="form-control form-control-sm select2" name="working_hour_id" id="working_hour_id">
-                                                            
+                                                        <select class="form-control form-control-sm select2" name="working_hour_id" id="working_hour_id">      
                                                             @foreach($workingHours as $workingHour)
                                                                 <option value="{{$workingHour->id}}">{{$workingHour->name}}</option>
                                                             @endforeach

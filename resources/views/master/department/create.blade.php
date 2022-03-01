@@ -40,7 +40,13 @@
                     <div class="row">
                         <div class="col-12">
 
-                            <form action="#">
+                        <form action="{{ isset($item) ? route('master.department.update', $item->id) : route('master.department.store')  }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        
+                        @if (isset($item))
+                            @method('PUT')
+                        @endif
+
 
                                 <div class="card card-shadow">
                                     <div class="card-body">
@@ -53,9 +59,9 @@
                                             <label for="manager_id" class="col-md-2 col-form-label pb-2 pt-1">Manager</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="manager_id" id="manager_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                @foreach($managers as $manager)
+                                                    <option value="{{$manager->id}}">{{$manager->name}}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -64,9 +70,9 @@
                                             <label for="parent_department_id" class="col-md-2 col-form-label pb-2 pt-1">Parent Department</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="parent_department_id" id="parent_department_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                @foreach($departments as $department)
+                                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                             <label for="custom_appraisal" class="col-md-2 col-form-label pb-2 pt-1">Custom Appraisal</label>

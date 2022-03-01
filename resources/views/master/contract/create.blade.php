@@ -40,7 +40,13 @@
                     <div class="row">
                         <div class="col-12">
 
-                            <form action="#">
+
+                        <form action="{{ isset($item) ? route('master.contract.update', $item->id) : route('master.contract.store')  }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        
+                        @if (isset($item))
+                            @method('PUT')
+                        @endif
 
                                 <ul class="nav nav-pills mb-3 mx-auto contract-status" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
@@ -63,7 +69,7 @@
                                         <div class="row">
                                             <div class="col-sm-8 col-10">
                                                 <div class="mb-4">
-                                                    <input id="contract_reference" name="contract_reference" type="text" placeholder="Contract Reference" class="form-control">
+                                                    <input id="contract_reference" name="reference" type="text" placeholder="Contract Reference" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-sm-4 col-2">
@@ -96,17 +102,17 @@
                                             <label for="employee_id" class="col-md-2 col-form-label pb-2 pt-1">Employee</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="employee_id" id="employee_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                @foreach($employees as $employee)
+                                                    <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                             <label for="department_id" class="col-md-2 col-form-label pb-2 pt-1">Department</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="department_id" id="department_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                @foreach($departments as $department)
+                                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -119,9 +125,9 @@
                                             <label for="job_position_id" class="col-md-2 col-form-label pb-2 pt-1">Job Position</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="job_position_id" id="job_position_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                @foreach($jobPositions as $jobPosition)
+                                                    <option value="{{$jobPosition->id}}">{{$jobPosition->name}}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -134,9 +140,9 @@
                                             <label for="contract_type_id" class="col-md-2 col-form-label pb-2 pt-1">Contract Type</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="contract_type_id" id="contract_type_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                @foreach($contractTypes as $contractType)
+                                                    <option value="{{$contractType->id}}">{{$contractType->name}}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -145,17 +151,17 @@
                                             <label for="salary_structure_type_id" class="col-md-2 col-form-label pb-2 pt-1">Salary Structure Type</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="salary_structure_type_id" id="salary_structure_type_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                @foreach($salaryStructureTypes as $salaryStructureType)
+                                                    <option value="{{$salaryStructureType->id}}">{{$salaryStructureType->contract_type}}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                             <label for="hr_responsible_id" class="col-md-2 col-form-label pb-2 pt-1">HR Responsible</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="hr_responsible_id" id="hr_responsible_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                @foreach($employees as $employee)
+                                                    <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -163,10 +169,10 @@
                                         <div class="row">
                                             <label for="working_schedule_id" class="col-md-2 col-form-label pb-2 pt-1">Working Schedule</label>
                                             <div class="col-md-4">
-                                                <select class="form-control form-control-sm select2" name="working_schedule_id" id="working_schedule_id">
-                                                    <option>Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                <select class="form-control form-control-sm select2" name="working_hour_id" id="working_schedule_id">
+                                                @foreach($workingHours as $workingHour)
+                                                    <option value="{{$workingHour->id}}">{{$workingHour->name}}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                         </div>

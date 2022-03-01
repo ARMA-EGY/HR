@@ -30,7 +30,6 @@ class DepartmentsController extends Controller
 
     public function index()
     {
-
 		$departments       = Department::orderBy('id','desc')
         ->get();
 
@@ -68,12 +67,14 @@ class DepartmentsController extends Controller
 
     //-------------- Store New Data ---------------\\
 
-    public function store(AddRequest $request)
+    public function store(Request $request)
     {
         $department =  Department::create([
-            'name' => $request->name,
+            'name' => $request->department_name,
             'parent_department_id' => $request->parent_department_id,
             'manager_id' => $request->manager_id,
+            'employee_appraisal_template' => $request->employee_appraisal_template,
+            'manager_appraisal_template' => $request->manager_appraisal_template,
         ]);
         
         $request->session()->flash('success', 'Department created successfully');
@@ -98,13 +99,15 @@ class DepartmentsController extends Controller
     
     //-------------- Update Data  ---------------\\
 
-    public function update(UpdateRequest $request, Department $department)
+    public function update(Request $request, Department $department)
     {
 
         $department->update([
-            'name' => $request->name,
+            'name' => $request->department_name,
             'parent_department_id' => $request->parent_department_id,
             'manager_id' => $request->manager_id,
+            'employee_appraisal_template' => $request->employee_appraisal_template,
+            'manager_appraisal_template' => $request->manager_appraisal_template,
         ]);
 		
 		session()->flash('success', 'Department updated successfully');
