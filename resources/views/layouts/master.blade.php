@@ -213,6 +213,20 @@
             
         </div>
 
+
+        <!-- Popup Modal -->
+        <div class="modal fade" id="popup" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+            <div class="modal-wrapper">
+                <div class="modal-dialog modal-lg" id="modal_body">
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Loader -->
+        <div id="loader" data-load='<div class="divload"><img src="{{asset("images/load.gif")}}" width="50" class="m-auto"></div>'></div>
+        <div id="loader2" data-load='<div class="d-flex"><img src="{{asset("images/loader.gif")}}" width="50" class="m-auto"></div>'></div>
+
         <!-- JAVASCRIPT -->
         <script src="{{asset('assets/libs/jquery/jquery.min.js')}}"></script>
         <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -232,6 +246,14 @@
         <!-- App js -->
         <script src="{{asset('assets/js/app.js')}}"></script>
         <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+        <script>
+            $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+        </script>
 
         @yield('script')
     </body>

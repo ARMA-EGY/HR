@@ -58,8 +58,26 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         //EMPLOYEES ROUTES
         Route::resource('/employee', 'EmployeesController');
 
-        
+        //WORK ADDRESS ROUTES
+        Route::resource('/workAddresses', 'WorkAddressesController');
+        Route::post('/getWorkAddress', 'WorkAddressesController@get')->name('getWorkAddress');
 
+        //WORK LOCATION ROUTES
+        Route::resource('/workLocation', 'WorkLocationController');
+        Route::post('/getWorkLocation', 'WorkLocationController@get')->name('getWorkLocation');
+
+        //WORKING HOURS ROUTES
+        Route::resource('/workingHours', 'WorkingHoursController');
+        Route::post('/getWorkingHours', 'WorkingHoursController@get')->name('getWorkingHours');
+
+        //JOB POSITIONS ROUTES
+        Route::resource('/jobPosition', 'JobPositionController');
+        Route::post('/getJobPosition', 'JobPositionController@get')->name('getJobPosition');
+
+        //ADDRESS ROUTES
+        Route::resource('/address', 'AddressController');
+        Route::post('/getAddress', 'AddressController@get')->name('getAddress');
+        
     });
 
     Route::prefix('leaves')->name('leaves.')->group(function () 

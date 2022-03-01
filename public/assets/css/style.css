@@ -124,3 +124,31 @@
     width: fit-content;
     border-radius: 10px;
 }
+
+.external-link
+{
+    position: absolute;
+    right: -5px;
+    top: 5px;
+    padding: 2px;
+}
+
+.pr-0
+{
+    padding-right: 0px;
+}
+
+.pl-0
+{
+    padding-left: 0px;
+}
+
+.text-right
+{
+    text-align: right!important;
+}
+
+.text-left
+{
+    text-align: left!important;
+}
