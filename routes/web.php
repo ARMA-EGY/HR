@@ -77,6 +77,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         //ADDRESS ROUTES
         Route::resource('/address', 'AddressController');
         Route::post('/getAddress', 'AddressController@get')->name('getAddress');
+
+        //ASSETS ROUTES
+        Route::resource('/assets', 'AssetsController');
+
+        //VEHICLES ROUTES
+        Route::resource('/vehicles', 'VehiclesController');
         
     });
 

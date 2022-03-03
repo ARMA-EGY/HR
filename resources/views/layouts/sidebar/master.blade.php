@@ -32,7 +32,18 @@
 
                 <li>
                     <a href="#" class="has-arrow waves-effect">
-                        <i class="bx bx-map"></i>
+                        <i class="fas fa-file-signature fs-16"></i>
+                        <span >{{__('master.CONTRACTS')}}</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li class=" {{request()->routeIs('master.contract.index') ? 'mm-active' : '' }}"><a href="{{route('master.contract.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-CONTRACTS')}}</a></li>
+                        <li class=" {{request()->routeIs('master.contract.create') ? 'mm-active' : '' }}"><a href="{{route('master.contract.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-CONTRACT')}}</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="has-arrow waves-effect text-warning">
+                        <i class="bx bx-map text-warning"></i>
                         <span >{{__('master.LOCATIONS')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
@@ -41,23 +52,12 @@
                 </li>
 
                 <li>
-                    <a href="#" class="has-arrow waves-effect">
-                        <i class="bx bxs-flag-alt"></i>
+                    <a href="#" class="has-arrow waves-effect text-warning">
+                        <i class="bx bxs-flag-alt text-warning"></i>
                         <span >{{__('master.NATIONALITIES')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="#"><i class="bx bx-disc fs-16"></i> Link</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#" class="has-arrow waves-effect">
-                        <i class="fas fa-file-signature fs-16"></i>
-                        <span >{{__('master.CONTRACTS')}}</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li class=" {{request()->routeIs('master.contract.index') ? 'mm-active' : '' }}"><a href="{{route('master.contract.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-CONTRACTS')}}</a></li>
-                        <li class=" {{request()->routeIs('master.contract.create') ? 'mm-active' : '' }}"><a href="{{route('master.contract.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-CONTRACT')}}</a></li>
                     </ul>
                 </li>
 
@@ -71,7 +71,8 @@
                         <span >{{__('master.ASSETS')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="#"><i class="bx bx-disc fs-16"></i> Link</a></li>
+                        <li class=" {{request()->routeIs('master.assets.index') ? 'mm-active' : '' }}"><a href="{{route('master.assets.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-ASSETS')}}</a></li>
+                        <li class=" {{request()->routeIs('master.assets.create') ? 'mm-active' : '' }}"><a href="{{route('master.assets.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-ASSETS')}}</a></li>
                     </ul>
                 </li>
 
@@ -81,13 +82,14 @@
                         <span >{{__('master.VEHICLES')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="#"><i class="bx bx-disc fs-16"></i> Link</a></li>
+                        <li class=" {{request()->routeIs('master.vehicles.index') ? 'mm-active' : '' }}"><a href="{{route('master.vehicles.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-VEHICLES')}}</a></li>
+                        <li class=" {{request()->routeIs('master.vehicles.create') ? 'mm-active' : '' }}"><a href="{{route('master.vehicles.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-VEHICLES')}}</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="#" class="has-arrow waves-effect">
-                        <i class='bx bx-calendar'></i>
+                    <a href="#" class="has-arrow waves-effect text-warning">
+                        <i class='bx bx-calendar text-warning'></i>
                         <span >{{__('master.WORK-SCHEDULES')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
@@ -96,8 +98,8 @@
                 </li>
 
                 <li>
-                    <a href="#" class="has-arrow waves-effect">
-                        <i class="fas fa-paste"></i>
+                    <a href="#" class="has-arrow waves-effect text-warning">
+                        <i class="fas fa-paste text-warning"></i>
                         <span >{{__('master.OTHER-CONTRACTS')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">

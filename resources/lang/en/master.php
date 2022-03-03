@@ -83,4 +83,12 @@ return [
 
     "ALL" => "All",
 
+    "ALL-ASSETS" => "All Assets",
+    "CREATE-ASSETS" => "Create Assets",
+    "CREATE-ASSET" => "Create Asset",
+
+    "ALL-VEHICLES" => "All Vehicles",
+    "CREATE-VEHICLES" => "Create Vehicles",
+    "CREATE-VEHICLE" => "Create Vehicle",
+
 ];

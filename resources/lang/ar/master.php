@@ -85,4 +85,12 @@ return [
 
     "ALL" => "الجميع",
 
+    "ALL-ASSETS" => "جميع الاصول",
+    "CREATE-ASSETS" => "انشاء اصول",
+    "CREATE-ASSET" => "انشاء اصول",
+
+    "ALL-VEHICLES" => "جميع السيارات",
+    "CREATE-VEHICLES" => "اضافة سيارات",
+    "CREATE-VEHICLE" => "اضافة سيارة",
+
 ];
