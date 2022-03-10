@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Employee;
+use App\Models\Department;
 
 class AssetsController extends Controller
 {
@@ -47,6 +49,10 @@ class AssetsController extends Controller
 
     public function create()
     {
+        $employees       = Employee::orderBy('id','desc')->get();
+        $departments       = Department::orderBy('id','desc')->get();
+        $countries       = Countries::all();
+
         return view('master.assets.create',[
         ]);
     }
