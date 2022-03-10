@@ -222,8 +222,9 @@
                                                             <div class="col-md-8">
                                                                 <i class="bx bx-link-external text-primary pointer external-link" data-link="{{route('master.getAddress')}}" data-select="#address_id"></i>
                                                                 <select class="form-control form-control-sm select2" name="address_id" id="address_id">
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
+                                                                    @foreach($workAddress as $address)
+                                                                    <option value="{{$address->id}}">{{$address->name}}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -433,7 +434,6 @@
                                                             <label for="type_id" class="col-md-4 col-form-label pb-2 pt-1">Employee Type</label>
                                                             <div class="col-md-8">
                                                                 <select class="form-control form-control-sm select2" name="type_id" id="type_id">
-                                                                    
                                                                     @foreach($employeesTypes as $employeesType)
                                                                         <option value="{{$employeesType->id}}">{{$employeesType->name}}</option>
                                                                     @endforeach
@@ -550,11 +550,159 @@
             data:       {id: value},
             success : function(response)
             {
-                $('#modal_body').html(response);
+                var obj = JSON.parse(response);
+                if(obj.status == true)
+                {
+                    $('#modal_body').html(obj.data);
+                }
+                
             }
         });
 
     });
+
+
+    $(document).on('submit', '.create_work_address', function(e)
+        {   
+            e.preventDefault();
+            let formData = new FormData(this);
+
+            $.ajax({
+                url: 		"{{route('master.workAddresses.store')}}",
+                method: 	'POST',
+                data: formData,
+                dataType: 	'json',
+                contentType: false,
+                processData: false,
+                success : function(data)
+                {
+                    var obj = JSON.parse(response);
+                    if(obj.status == true)
+                    {
+                        
+                    }
+                },
+                error : function(reject)
+                {
+                }
+            });
+
+        });
+
+
+        $(document).on('submit', '.create_work_location', function(e)
+        {   
+            e.preventDefault();
+            let formData = new FormData(this);
+
+            $.ajax({
+                url: 		"{{route('master.workLocation.store')}}",
+                method: 	'POST',
+                data: formData,
+                dataType: 	'json',
+                contentType: false,
+                processData: false,
+                success : function(data)
+                {
+                    var obj = JSON.parse(response);
+                    if(obj.status == true)
+                    {
+                        
+                    }
+                },
+                error : function(reject)
+                {
+                }
+            });
+
+        });        
+
+
+        $(document).on('submit', '.create_work_hours', function(e)
+        {   
+            e.preventDefault();
+            let formData = new FormData(this);
+
+            $.ajax({
+                url: 		"{{route('master.workingHours.store')}}",
+                method: 	'POST',
+                data: formData,
+                dataType: 	'json',
+                contentType: false,
+                processData: false,
+                success : function(data)
+                {
+                    var obj = JSON.parse(response);
+                    if(obj.status == true)
+                    {
+                        
+                    }
+                },
+                error : function(reject)
+                {
+                }
+            });
+
+        });
+        
+        
+        
+        $(document).on('submit', '.create_address', function(e)
+        {   
+            e.preventDefault();
+            let formData = new FormData(this);
+
+            $.ajax({
+                url: 		"{{route('master.address.store')}}",
+                method: 	'POST',
+                data: formData,
+                dataType: 	'json',
+                contentType: false,
+                processData: false,
+                success : function(data)
+                {
+                    var obj = JSON.parse(response);
+                    if(obj.status == true)
+                    {
+                        
+                    }
+                },
+                error : function(reject)
+                {
+                }
+            });
+
+        });
+
+
+        
+        $(document).on('submit', '.create_job_position', function(e)
+        {   
+            e.preventDefault();
+            let formData = new FormData(this);
+
+            $.ajax({
+                url: 		"{{route('master.jobPosition.store')}}",
+                method: 	'POST',
+                data: formData,
+                dataType: 	'json',
+                contentType: false,
+                processData: false,
+                success : function(data)
+                {
+                    var obj = JSON.parse(response);
+                    if(obj.status == true)
+                    {
+                        
+                    }
+                },
+                error : function(reject)
+                {
+                }
+            });
+
+        });
+
 
 </script>
 

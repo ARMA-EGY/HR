@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Master;
+use App\Traits\GeneralTrait;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,9 +14,12 @@ use App\Models\User;
 use App\Models\AddressType;
 use App\Models\Title;
 use App\Models\Tag;
+use App\Models\Countries;
+use App\Models\contractTypes;
 
 class WorkAddressesController extends Controller
 {
+    use GeneralTrait;
     /**
      * Create a new controller instance.
      *
@@ -59,7 +63,7 @@ class WorkAddressesController extends Controller
 
     public function create()
     {
-        $countries     = Countries::orderBy('id','desc')->get();
+        $countries     = Countries::all();
         $address_type  = AddressType::orderBy('id','desc')->get();
         $title         = Title::orderBy('id','desc')->get();
         $tags          = Tag::orderBy('id','desc')->get();
@@ -81,10 +85,20 @@ class WorkAddressesController extends Controller
 
     public function store(Request $request)
     {
+        $individual_company;
+        if($request->type == 'individual')
+        {
+            $individual_company = 1;
+        }elseif($request->type == 'company')
+        {
+            $individual_company = 2;
+        }
+
+
         $workAddress =  WorkAddress::create([
-            'individual_company' => $request->individual_company,
-            'name' => $request->name,
-            'address_type_id' => $request->address_type_id,
+            'individual_company' => $individual_company,
+            'name' => $request->address_name,
+            'address_type_id' => $request->Address_id,
             'street' => $request->street,
             'street2' => $request->street2,
             'city' => $request->city,
@@ -99,7 +113,6 @@ class WorkAddressesController extends Controller
             'website' => $request->website,
             'title_id' => $request->title_id,
             'tag_id' => $request->tag_id,
-            
         ]);
         
 
@@ -113,7 +126,7 @@ class WorkAddressesController extends Controller
     
     public function edit(WorkAddress $workAddress)
     {
-        $countries     = Countries::orderBy('id','desc')->get();
+        $countries     = Countries::all();
         $address_type  = AddressType::orderBy('id','desc')->get();
         $title         = Title::orderBy('id','desc')->get();
         $tags          = Tag::orderBy('id','desc')->get();
@@ -121,9 +134,9 @@ class WorkAddressesController extends Controller
 		$workAddressForm = view('master.workaddress.create', [
             'workAddress' => $workAddress,
             'countries' => $countries,
-             'address_type' => $address_type,
-             'title' => $title,
-             'tags' => $tags,
+            'address_type' => $address_type,
+            'title' => $title,
+            'tags' => $tags,
         ])->render();
 
         $rsData = $this->returnData('workAddressForm', $workAddressForm);
@@ -166,9 +179,22 @@ class WorkAddressesController extends Controller
 
     public function get(Request $request)
     {
+        $countries     = Countries::all();
+        $address_type  = AddressType::orderBy('id','desc')->get();
+        $titles        = Title::orderBy('id','desc')->get();
+        $tags          = Tag::orderBy('id','desc')->get();
+        $contractTypes = ContractTypes::orderBy('id','desc')->get();
         
-        return view('master.components.workAddress',[
 
-        ]);
+        $workAddressForm = view('master.components.workAddress',[
+            'countries' => $countries,
+            'address_type' => $address_type,
+            'titles' => $titles,
+            'tags' => $tags,
+            'contractTypes' => $contractTypes,
+        ])->render();
+
+        $rsData = $this->returnData('workAddressForm', $workAddressForm);
+        return response()->json($rsData, 200);
     }
 }

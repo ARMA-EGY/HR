@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Master;
+use App\Traits\GeneralTrait;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ use App\Models\WorkLocation;
 
 class WorkLocationController extends Controller
 {
+    use GeneralTrait;
     /**
      * Create a new controller instance.
      *
@@ -72,8 +74,8 @@ class WorkLocationController extends Controller
     public function store(Request $request)
     {
         $workLocation =  WorkLocation::create([
-            'name' => $request->name,
-            'work_address_id' => $request->work_address_id,
+            'name' => $request->work_location,
+            'work_address_id' => $request->work_address,
             'location_number' => $request->location_number,
         ]);
         
@@ -118,9 +120,13 @@ class WorkLocationController extends Controller
     public function get(Request $request)
     {
         
-        return view('master.components.workLocation',[
+        $workAddresses = WorkAddress::orderBy('id','desc')->get();
+        $workLocationForm = view('master.components.workLocation',[
+            'workAddresses' => $workAddresses,
+        ])->render();
 
-        ]);
+        $rsData = $this->returnData('workLocationForm', $workLocationForm);
+        return response()->json($rsData, 200);
     }
 
 

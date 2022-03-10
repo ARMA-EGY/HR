@@ -6,9 +6,9 @@
         <h4 class="modal-title text-left"> Work Address</h4>
         <button type="button" class="close btn btn-danger btn-sm" data-bs-dismiss="modal" aria-hidden="true">×</button>
     </div>
-
+    <form id="create_work_address" class="create_work_address">
     <div class="modal-body">	
-        <form>
+        
 
             <div class="row mx-2">
                   <div class="form-check col-md-3">
@@ -31,12 +31,18 @@
                     <input class="form-control form-control-sm" type="text" name="address_name" id="address_name">
                 </div>
             </div>
+
             <div class="row individual">
-                <label for="company_name" class="col-md-3 col-form-label pb-2 pt-1">Company Name</label>
+                <label for="Address_id" class="col-md-3 col-form-label pb-2 pt-1">Address Type</label>
                 <div class="col-md-6">
-                    <input class="form-control form-control-sm individual-input" type="text" name="company_name" id="company_name">
+                <select class="form-control form-control-sm select2" name="Address_id" id="Address_id">                                                                    
+                    @foreach($contractTypes as $contractType)
+                        <option value="{{$contractType->id}}">{{$contractType->name}}</option>
+                    @endforeach
+                </select>
                 </div>
             </div>
+
             
             <div class="row mt-4">
 
@@ -47,10 +53,10 @@
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input class="form-control form-control-sm" type="text" name="address" placeholder="street...">
+                                    <input class="form-control form-control-sm" type="text" name="street" placeholder="street...">
                                 </div>
                                 <div class="col-md-12">
-                                    <input class="form-control form-control-sm" type="text" name="address2" placeholder="street 2...">
+                                    <input class="form-control form-control-sm" type="text" name="street2" placeholder="street 2...">
                                 </div>
                                 <div class="col-md-4 pr-0">
                                     <input class="form-control form-control-sm" type="text" name="city" placeholder="city">
@@ -61,8 +67,12 @@
                                 <div class="col-md-4 pl-0">
                                     <input class="form-control form-control-sm" type="text" name="zip" placeholder="zip">
                                 </div>
-                                <div class="col-md-12">
-                                    <input class="form-control form-control-sm" type="text" name="country" placeholder="country">
+                                <div class="col-md-12">   
+                                <select class="form-control form-control-sm select2" name="country_id" id="country_id">                                                                    
+                                    @foreach($countries as $country)
+                                        <option value="{{$country->id}}">{{$country->country_Name}}</option>
+                                    @endforeach
+                                </select>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +113,7 @@
                     <div class="row">
                         <label for="address_email" class="col-md-4 col-form-label pb-2 pt-1">Email</label>
                         <div class="col-md-8">
-                            <input class="form-control form-control-sm" type="email" name="address_email" id="address_email">
+                            <input class="form-control form-control-sm" type="email" name="email" id="email">
                         </div>
                     </div>
 
@@ -117,22 +127,38 @@
                     <div class="row individual">
                         <label for="title" class="col-md-4 col-form-label pb-2 pt-1">Title</label>
                         <div class="col-md-8">
-                            <input class="form-control form-control-sm individual-input" type="text" name="title" id="title">
+                            <select class="form-control form-control-sm select2" name="title_id" id="title_id">                                                                    
+                                @foreach($titles as $title)
+                                    <option value="{{$title->id}}">{{$title->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
+
+                    <div class="row individual">
+                        <label for="tag" class="col-md-4 col-form-label pb-2 pt-1">Tag</label>
+                        <div class="col-md-8">
+                            <select class="form-control form-control-sm select2" name="tag_id" id="tag_id">                                                                    
+                                @foreach($tags as $tag)
+                                    <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>                    
 
                 </div>
 
             </div>
 
+        
+
+    </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+            </div>
         </form>
-
-    </div>
-
-    <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-sm">Save</button>
-        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
-    </div>
 </div>
 
 
@@ -153,5 +179,8 @@
             $('.individual').slideDown();
         }
     });
+
+
+
 
 </script>

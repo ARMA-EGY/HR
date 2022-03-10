@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Master;
+use App\Traits\GeneralTrait;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ use App\Models\WorkingHours;
 
 class WorkingHoursController extends Controller
 {
+    use GeneralTrait;
     /**
      * Create a new controller instance.
      *
@@ -115,10 +117,11 @@ class WorkingHoursController extends Controller
 
     public function get(Request $request)
     {
-        
-        return view('master.components.workingHours',[
+        $workingHoursForm = view('master.components.workingHours',[
+        ])->render();
 
-        ]);
+        $rsData = $this->returnData('workingHoursForm', $workingHoursForm);
+        return response()->json($rsData, 200);
     }
 
 
