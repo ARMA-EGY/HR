@@ -67,6 +67,17 @@
 
                 <li>
                     <a href="#" class="has-arrow waves-effect">
+                        <i class='bx bxs-file'></i>
+                        <span >{{__('master.DOCUMENTS')}}</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li class=" {{request()->routeIs('master.document.index') ? 'mm-active' : '' }}"><a href="{{route('master.document.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-DOCUMENTS')}}</a></li>
+                        <li class=" {{request()->routeIs('master.document.create') ? 'mm-active' : '' }}"><a href="{{route('master.document.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ADD-DOCUMENT')}}</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
                         <i class='bx bx-cube-alt'></i>
                         <span >{{__('master.ASSETS')}}</span>
                     </a>
@@ -88,12 +99,13 @@
                 </li>
 
                 <li>
-                    <a href="#" class="has-arrow waves-effect text-warning">
-                        <i class='bx bx-calendar text-warning'></i>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class='bx bx-calendar'></i>
                         <span >{{__('master.WORK-SCHEDULES')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="#"><i class="bx bx-disc fs-16"></i> Link</a></li>
+                        <li class=" {{request()->routeIs('master.workingHours.index') ? 'mm-active' : '' }}"><a href="{{route('master.workingHours.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-WORK-SCHEDULES')}}</a></li>
+                        <li class=" {{request()->routeIs('master.workingHours.create') ? 'mm-active' : '' }}"><a href="{{route('master.workingHours.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-WORK-SCHEDULES')}}</a></li>
                     </ul>
                 </li>
 

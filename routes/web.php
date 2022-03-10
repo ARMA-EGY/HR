@@ -83,6 +83,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
 
         //VEHICLES ROUTES
         Route::resource('/vehicles', 'VehiclesController');
+
+        //DOCUMENTS ROUTES
+        Route::resource('/document', 'DocumentController');
+
+        //WORKSPACES ROUTES
+        Route::resource('/workspace', 'WorkspaceController');
         
     });
 
