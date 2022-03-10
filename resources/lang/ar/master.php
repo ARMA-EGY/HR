@@ -85,6 +85,12 @@ return [
 
     "ALL" => "الجميع",
 
+    "DOCUMENTS" => "المستندات",
+    "ALL-DOCUMENTS" => "جميع المستندات",
+    "CREATE-DOCUMENTS" => "انشاء مستند",
+    "CREATE-DOCUMENT" => "انشاء مستند",
+    "ADD-DOCUMENT" => "اضافة مستند",
+
     "ALL-ASSETS" => "جميع الاصول",
     "CREATE-ASSETS" => "انشاء اصول",
     "CREATE-ASSET" => "انشاء اصول",
@@ -92,5 +98,15 @@ return [
     "ALL-VEHICLES" => "جميع السيارات",
     "CREATE-VEHICLES" => "اضافة سيارات",
     "CREATE-VEHICLE" => "اضافة سيارة",
+
+    "ALL-WORK-SCHEDULES" => "جميع جداول العمل",
+    "CREATE-WORK-SCHEDULE" => "انشاء جدول عمل",
+
+    "WORKSPACES" => "المجلدات",
+    "WORKSPACE" => "مجلد",
+    "ALL-WORKSPACES" => "جميع المجلدات",
+    "CREATE-WORKSPACES" => "انشاء مجلدات",
+    "CREATE-WORKSPACE" => "انشاء مجلد",
+    "ADD-WORKSPACE" => "اضافة مجلد",
 
 ];

@@ -82,7 +82,6 @@
         $(this).tab('show')
     })
 
-
     $('.add_line').click(function(){
 
         var item = $('.line').length

@@ -25,26 +25,26 @@
                         <label class="col-md-4 col-form-label pb-2 pt-1">Address</label>
                         <div class="col-md-8">
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input class="form-control form-control-sm" type="text" name="address" placeholder="street...">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input class="form-control form-control-sm" type="text" name="address" placeholder="street...">
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="form-control form-control-sm" type="text" name="address2" placeholder="street 2...">
+                                </div>
+                                <div class="col-md-4 pr-0">
+                                    <input class="form-control form-control-sm" type="text" name="city" placeholder="city">
+                                </div>
+                                <div class="col-md-4 p-0">
+                                    <input class="form-control form-control-sm" type="text" name="state" placeholder="state">
+                                </div>
+                                <div class="col-md-4 pl-0">
+                                    <input class="form-control form-control-sm" type="text" name="zip" placeholder="zip">
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="form-control form-control-sm" type="text" name="country" placeholder="country">
+                                </div>
                             </div>
-                            <div class="col-md-12">
-                                <input class="form-control form-control-sm" type="text" name="address2" placeholder="street 2...">
-                            </div>
-                            <div class="col-md-4 pr-0">
-                                <input class="form-control form-control-sm" type="text" name="city" placeholder="city">
-                            </div>
-                            <div class="col-md-4 p-0">
-                                <input class="form-control form-control-sm" type="text" name="state" placeholder="state">
-                            </div>
-                            <div class="col-md-4 pl-0">
-                                <input class="form-control form-control-sm" type="text" name="zip" placeholder="zip">
-                            </div>
-                            <div class="col-md-12">
-                                <input class="form-control form-control-sm" type="text" name="country" placeholder="country">
-                            </div>
-                        </div>
 
                         </div>
                     </div>

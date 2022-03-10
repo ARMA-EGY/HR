@@ -38,7 +38,7 @@ class WorkingHoursController extends Controller
 		$workingHours       = WorkingHours::orderBy('id','desc')
         ->get();
 
-        return view('master.workinghour.index', [
+        return view('master.workinghours.index', [
             'items' => $workingHours,
             'items_count' => count($workingHours),
         ]);

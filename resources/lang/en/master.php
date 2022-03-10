@@ -83,6 +83,12 @@ return [
 
     "ALL" => "All",
 
+    "DOCUMENTS" => "Documents",
+    "ALL-DOCUMENTS" => "All Documents",
+    "CREATE-DOCUMENTS" => "Create Documents",
+    "CREATE-DOCUMENT" => "Create Document",
+    "ADD-DOCUMENT" => "Add Document",
+
     "ALL-ASSETS" => "All Assets",
     "CREATE-ASSETS" => "Create Assets",
     "CREATE-ASSET" => "Create Asset",
@@ -90,5 +96,15 @@ return [
     "ALL-VEHICLES" => "All Vehicles",
     "CREATE-VEHICLES" => "Create Vehicles",
     "CREATE-VEHICLE" => "Create Vehicle",
+
+    "ALL-WORK-SCHEDULES" => "All Work Schedules",
+    "CREATE-WORK-SCHEDULE" => "Create Work Schedule",
+
+    "WORKSPACES" => "Workspaces",
+    "WORKSPACE" => "Workspace",
+    "ALL-WORKSPACES" => "All Workspaces",
+    "CREATE-WORKSPACES" => "Create Workspaces",
+    "CREATE-WORKSPACE" => "Create Workspace",
+    "ADD-WORKSPACE" => "Add Workspace",
 
 ];
