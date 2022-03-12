@@ -66,8 +66,9 @@
                                                     <label for="category_id" class="col-md-4 col-form-label pb-2 pt-1">Category</label>
                                                     <div class="col-md-8">
                                                         <select class="form-control form-control-sm select2" name="category_id" id="category_id">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
+                                                        @foreach($assetsCategories as $assetsCategory)
+                                                            <option value="{{$assetsCategory->id}}">{{$assetsCategory->name}}</option>
+                                                        @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -87,36 +88,37 @@
                                                     <label for="employee_id" class="col-md-4 col-form-label pb-2 pt-1">Employee</label>
                                                     <div class="col-md-8">
                                                         <select class="form-control form-control-sm select2" name="employee_id" id="employee_id">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
+                                                        @foreach($employees as $employee)
+                                                            <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                        @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
     
-                                                <div class="row department other">
-                                                    <label for="department_id" class="col-md-4 col-form-label pb-2 pt-1">Department</label>
-                                                    <div class="col-md-8">
-                                                        <select class="form-control form-control-sm select2" name="department_id" id="department_id">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+
                                                 
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="row">
-                                                    <label for="maintenance_team" class="col-md-4 col-form-label pb-2 pt-1">Maintenance Team</label>
+                                                    <label for="maintenance_team_id" class="col-md-4 col-form-label pb-2 pt-1">Maintenance Team</label>
                                                     <div class="col-md-8">
-                                                        <input class="form-control form-control-sm" type="text" name="maintenance_team" id="maintenance_team">
+                                                        <select class="form-control form-control-sm select2" name="maintenance_team_id" id="maintenance_team_id">
+                                                        @foreach($maintenanceTeams as $maintenanceTeam)
+                                                            <option value="{{$maintenanceTeam->id}}">{{$maintenanceTeam->name}}</option>
+                                                        @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
 
                                                 <div class="row">
-                                                    <label for="technician" class="col-md-4 col-form-label pb-2 pt-1">Technician</label>
+                                                    <label for="technician_id" class="col-md-4 col-form-label pb-2 pt-1">Technician</label>
                                                     <div class="col-md-8">
-                                                        <input class="form-control form-control-sm" type="text" name="technician" id="technician">
+                                                    <select class="form-control form-control-sm select2" name="technician_id" id="technician_id">
+                                                        @foreach($employees as $employee)
+                                                            <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                        @endforeach
+                                                    </select>
                                                     </div>
                                                 </div>
 
@@ -166,9 +168,13 @@
 
                                             <div class="tab-pane fade" id="product_information" role="tabpanel" aria-labelledby="product_information-tab">
                                                 <div class="row mt-4">
-                                                    <label for="vendor" class="col-md-2 col-3 col-form-label pt-1">Vendor</label>
+                                                    <label for="vendor_id" class="col-md-2 col-3 col-form-label pt-1">Vendor</label>
                                                     <div class="col-md-4 col-6">
-                                                        <input class="form-control form-control-sm" type="text" name="vendor" id="vendor">
+                                                        <select class="form-control form-control-sm select2" name="vendor_id" id="vendor_id">
+                                                        @foreach($employees as $employee)
+                                                            <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                        @endforeach
+                                                    </select>
                                                     </div>
 
                                                     <label for="vendor_reference" class="col-md-2 col-3 col-form-label pt-1">Vendor Reference</label>

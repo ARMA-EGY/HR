@@ -70,8 +70,9 @@
                                             <label for="tags" class="col-md-2 col-form-label pb-2 pt-1">Tags</label>
                                             <div class="col-md-6">
                                                 <select class="select2 form-control select2-multiple" name="tags[]" multiple="multiple" data-placeholder="Choose ...">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                @foreach($tags as $tag)
+                                                    <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -85,8 +86,9 @@
                                                     <label for="driver_id" class="col-md-4 col-form-label pb-2 pt-1">Driver</label>
                                                     <div class="col-md-8">
                                                         <select class="form-control form-control-sm select2" name="driver_id" id="driver_id">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
+                                                            @foreach($employees as $employee)
+                                                                <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -95,8 +97,9 @@
                                                     <label for="future_driver_id" class="col-md-4 col-form-label pb-2 pt-1">Future Driver</label>
                                                     <div class="col-md-8">
                                                         <select class="form-control form-control-sm select2" name="future_driver_id" id="future_driver_id">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
+                                                            @foreach($employees as $employee)
+                                                                <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -121,9 +124,13 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <label for="fleet_manager" class="col-md-4 col-form-label pb-2 pt-1">Fleet Manager</label>
+                                                    <label for="fleet_manager_id" class="col-md-4 col-form-label pb-2 pt-1">Fleet Manager</label>
                                                     <div class="col-md-8">
-                                                        <input class="form-control form-control-sm" type="text" name="fleet_manager" id="fleet_manager">
+                                                        <select class="form-control form-control-sm select2" name="fleet_manager_id" id="fleet_manager_id">
+                                                            @foreach($employees as $employee)
+                                                                <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
 

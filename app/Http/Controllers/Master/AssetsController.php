@@ -8,6 +8,11 @@ use App\User;
 use App\Models\Employee;
 use App\Models\Department;
 
+use App\Models\Asset;
+use App\Models\AssetsCategory;
+use App\Models\MaintenanceTeam;
+use App\Models\MaintenanceTeamMember;
+
 class AssetsController extends Controller
 {
     /**
@@ -49,11 +54,20 @@ class AssetsController extends Controller
 
     public function create()
     {
-        $employees       = Employee::orderBy('id','desc')->get();
-        $departments       = Department::orderBy('id','desc')->get();
-        $countries       = Countries::all();
+        $employees              = Employee::orderBy('id','desc')->get();
+        $departments            = Department::orderBy('id','desc')->get();
+        $assets                 = Asset::orderBy('id','desc')->get();
+        $assetsCategories       = AssetsCategory::orderBy('id','desc')->get();
+        $maintenanceTeams       = MaintenanceTeam::orderBy('id','desc')->get();
+        $maintenanceTeamMembers = MaintenanceTeamMember::orderBy('id','desc')->get();
 
         return view('master.assets.create',[
+            'employees' => $employees,
+            'departments' => $departments,
+            'assets' => $assets,
+            'assetsCategories' => $assetsCategories,
+            'maintenanceTeams' => $maintenanceTeams,
+            'maintenanceTeamMembers' => $maintenanceTeamMembers,
         ]);
     }
 
@@ -62,7 +76,31 @@ class AssetsController extends Controller
 
     public function store(Request $request)
     {
+        $asset =  Asset::create([
+            'name' => $request->name,
+            'asset_category_id' => $request->category_id,
+            'used_by' => $request->used_by,
+            'employee_id' => $request->employee_id,
+            'maintenance_team_id' => $request->maintenance_team_id,
+
+            'technician_id' => $request->technician_id,
+            'used_in_location' => $request->used_in_location,
+            'description' => $request->description,
+            'vendor_id' => $request->vendor_id,
+            'vendor_reference' => $request->vendor_reference,
+
+            'model' => $request->model,
+            'serial_number' => $request->serial_number,
+            'effective_date' => $request->effective_date,
+            'cost' => $request->cost,
+            'warranty_expiration_date' => $request->warranty_expiration_date,
+            'preventive_maintenance_frequency' => $request->preventive_maintenance_frequency,
+            'maintenance_duration' => $request->maintenance_duration,
+            
+        ]);
         
+        $request->session()->flash('success', 'Contract created successfully');
+
         return redirect(route('master.assets.index'));
     }
 
