@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\AssetsCategory;
+use App\Models\Employee;
 
 class Asset extends Model
 {
@@ -16,6 +18,21 @@ class Asset extends Model
         'model','serial_number','effective_date','cost',
         'warranty_expiration_date','preventive_maintenance_frequency','maintenance_duration'
     ];
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class,'employee_id');
+    }
+
+    public function vendor()
+    {
+        return $this->belongsTo(Employee::class,'vendor_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(AssetsCategory::class,'asset_category_id');
+    }
 
 
 }

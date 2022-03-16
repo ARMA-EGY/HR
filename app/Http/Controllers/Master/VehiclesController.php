@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-use App\Models\vehicle;
+use App\Models\Vehicle;
 use App\Models\Employee;
 use App\Models\Tag;
 
@@ -30,8 +30,11 @@ class VehiclesController extends Controller
 
     public function index()
     {
+		$items       = Vehicle::orderBy('id','desc')->get();
 
         return view('master.vehicles.index', [
+            'items' => $items,
+            'items_count' => count($items),
         ]);
     }
 
@@ -64,7 +67,7 @@ class VehiclesController extends Controller
 
     public function store(Request $request)
     {
-        $asset =  vehicle::create([
+        $asset =  Vehicle::create([
             'model' => $request->model,
             'license_plate' => $request->license_plate,
             'driver_id' => $request->driver_id,

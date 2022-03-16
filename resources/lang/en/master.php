@@ -12,6 +12,10 @@ return [
 
     "ENGLISH" => "English",
     "ARABIC" => "Arabic",
+
+    "EDIT" => "Edit",
+    "VIEW" => "View",
+    "VIEW-DETAILS" => "View Details",
     
     "WELCOME-BACK" => "Welcome Back !",
     "SIGNIN-TO-CONTINUE-TO" => "Sign in to continue to",

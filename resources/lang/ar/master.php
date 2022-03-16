@@ -12,6 +12,10 @@ return [
 
     "ENGLISH" => "الانجليزية",
     "ARABIC" => "العربية",
+
+    "EDIT" => "تعديل",
+    "VIEW" => "مشاهدة",
+    "VIEW-DETAILS" => "عرض التفاصيل",
     
     "WELCOME-BACK" => "مرحباً بك !",
     "SIGNIN-TO-CONTINUE-TO" => "قم بتسجيل الدخول للمتابعة الى ",

@@ -34,8 +34,11 @@ class AssetsController extends Controller
 
     public function index()
     {
+		$items       = Asset::orderBy('id','desc')->get();
 
         return view('master.assets.index', [
+            'items' => $items,
+            'items_count' => count($items),
         ]);
     }
 

@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Employee;
 
-class vehicle extends Model
+class Vehicle extends Model
 {
     protected $table = 'vehicles';
     
@@ -17,6 +18,11 @@ class vehicle extends Model
         'transmission','color','horsepower','power','fuel_type','co2_emissions',
         'co2_standard','notes'
     ];
+
+    public function driver()
+    {
+        return $this->belongsTo(Employee::class,'driver_id');
+    }
 
 
 

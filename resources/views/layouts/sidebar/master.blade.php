@@ -105,7 +105,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li class=" {{request()->routeIs('master.workingHours.index') ? 'mm-active' : '' }}"><a href="{{route('master.workingHours.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-WORK-SCHEDULES')}}</a></li>
-                        <li class=" {{request()->routeIs('master.workingHours.create') ? 'mm-active' : '' }}"><a href="{{route('master.workingHours.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-WORK-SCHEDULES')}}</a></li>
+                        <li class=" {{request()->routeIs('master.workingHours.create') ? 'mm-active' : '' }}"><a href="{{route('master.workingHours.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-WORK-SCHEDULE')}}</a></li>
                     </ul>
                 </li>
 

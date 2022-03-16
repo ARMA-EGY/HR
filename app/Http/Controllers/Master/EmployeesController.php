@@ -40,14 +40,11 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-
-		$employees       = Employee::orderBy('id','desc')
-        ->get();
+		$employees       = Employee::orderBy('id','desc')->get();
 
         return view('master.employee.index', [
             'items' => $employees,
             'items_count' => count($employees),
-            'type' => 'all',
         ]);
     }
 
