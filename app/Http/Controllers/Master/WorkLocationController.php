@@ -102,14 +102,15 @@ class WorkLocationController extends Controller
 
     public function update(Request $request, workLocation $workLocation)
     {
-        $workLocationForm->update([
+        dd($request->name);
+        $workLocation->update([
             'name' => $request->name,
             'work_address_id' => $request->work_address_id,
             'location_number' => $request->location_number,
         ]);
 		
 
-        $rsData = $this->returnData('workLocationForm', $workLocationForm,'Work Location updated successfully');
+        $rsData = $this->returnData('workLocation', $workLocation,'Work Location updated successfully');
           
         return response()->json($rsData, 200);
     }
@@ -119,11 +120,25 @@ class WorkLocationController extends Controller
 
     public function get(Request $request)
     {
-        
         $workAddresses = WorkAddress::orderBy('id','desc')->get();
-        $workLocationForm = view('master.components.workLocation',[
-            'workAddresses' => $workAddresses,
-        ])->render();
+        $item;
+        $workLocationForm;
+
+        if(isset($request->id))
+        {
+            $item =  workLocation::find($request->id);
+            $workLocationForm = view('master.components.workLocation',[
+                'item' => $item,
+                'workAddresses' => $workAddresses,
+            ])->render();
+        }else{
+            $workLocationForm = view('master.components.workLocation',[
+                'workAddresses' => $workAddresses,
+            ])->render();
+        }
+
+
+
 
         $rsData = $this->returnData('workLocationForm', $workLocationForm);
         return response()->json($rsData, 200);

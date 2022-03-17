@@ -103,6 +103,7 @@ class DepartmentsController extends Controller
     {
 
         $department->update([
+            'item' => $request->department,
             'name' => $request->department_name,
             'parent_department_id' => $request->parent_department_id,
             'manager_id' => $request->manager_id,

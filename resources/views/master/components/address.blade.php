@@ -7,10 +7,13 @@
         <button type="button" class="close btn btn-danger btn-sm" data-bs-dismiss="modal" aria-hidden="true">×</button>
     </div>
 
-    <form id="create_address" class="create_address">
+    <form   @if (isset($item)) id="update_address" class="update_address" @else id="create_address" class="create_address" @endif>
         <div class="modal-body">	
             
-
+        @if (isset($item))
+            <input type="hidden" name="url" id="url" value="{{route('master.address.update', $item->id)}}">
+            @method('PUT')
+        @endif
                 <div class="row">
                     <label for="address_name" class="col-md-2 col-form-label pb-2 pt-1">Name</label>
                     <div class="col-md-6">

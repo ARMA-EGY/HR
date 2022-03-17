@@ -54,13 +54,13 @@
                                         <div class="row">
                                             <label for="department_name" class="col-md-2 col-form-label pb-2 pt-1">Department Name</label>
                                             <div class="col-md-4">
-                                                <input class="form-control form-control-sm" type="text" name="department_name" id="department_name">
+                                                <input class="form-control form-control-sm" type="text" name="department_name" id="department_name" value="{{ isset($item) ? $item->name : old('name') }}">
                                             </div>
                                             <label for="manager_id" class="col-md-2 col-form-label pb-2 pt-1">Manager</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="manager_id" id="manager_id">
                                                 @foreach($managers as $manager)
-                                                    <option value="{{$manager->id}}">{{$manager->name}}</option>
+                                                    <option value="{{$manager->id}}" @if (isset($item)) @if($item->manager_id == $manager->id) selected @endif @endif>{{$manager->name}}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
@@ -71,15 +71,15 @@
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="parent_department_id" id="parent_department_id">
                                                 @foreach($departments as $department)
-                                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                                    <option value="{{$department->id}}" @if (isset($item)) @if($item->parent_department_id == $department->id) selected @endif @endif>{{$department->name}}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
                                             <label for="custom_appraisal" class="col-md-2 col-form-label pb-2 pt-1">Custom Appraisal</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm custom_appraisal" name="custom_appraisal" id="custom_appraisal">
-                                                    <option value="0">No</option>
-                                                    <option value="1">Yes</option>
+                                                    <option value="0" @if (isset($item)) @if($item->custom_appraisal == 0) selected @endif @endif>No</option>
+                                                    <option value="1" @if (isset($item)) @if($item->custom_appraisal == 1) selected @endif @endif>Yes</option>
                                                 </select>
                                             </div>
                                         </div>

@@ -7,9 +7,12 @@
         <button type="button" class="close btn btn-danger btn-sm" data-bs-dismiss="modal" aria-hidden="true">×</button>
     </div>
 
-    <form id="create_job_position" class="create_job_position">
+    <form @if (isset($item)) id="update_job_position" class="update_job_position" @else id="create_job_position" class="create_job_position" @endif>
         <div class="modal-body">	
-            
+        @if (isset($item))
+        <input type="hidden" name="url" id="url" value="{{route('master.jobPosition.update', $item->id)}}">
+        @method('PUT')
+    @endif   
 
                 <div class="row">
                     <label for="job_position" class="col-md-3 col-form-label pb-2 pt-1">Job Position</label>

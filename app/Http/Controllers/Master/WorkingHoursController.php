@@ -117,8 +117,20 @@ class WorkingHoursController extends Controller
 
     public function get(Request $request)
     {
-        $workingHoursForm = view('master.components.workingHours',[
-        ])->render();
+        $item;
+        $workLocationForm;
+        
+        if(isset($request->id))
+        {
+            $item =  workLocation::find($request->id);
+
+            $workLocationForm = view('master.components.workLocation',[
+                'item' => $item,
+            ])->render();
+        }else{
+            $workingHoursForm = view('master.components.workingHours',[
+                ])->render();
+        }
 
         $rsData = $this->returnData('workingHoursForm', $workingHoursForm);
         return response()->json($rsData, 200);

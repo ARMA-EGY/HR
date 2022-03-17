@@ -1,13 +1,15 @@
-
-
-
 <div class="modal-content">
     <div class="modal-header bg-blue">
         <h4 class="modal-title text-left"> Work Location</h4>
         <button type="button" class="close btn btn-danger btn-sm" data-bs-dismiss="modal" aria-hidden="true">×</button>
     </div>
 
-    <form class="create_work_location">
+    <form @if (isset($item)) id="update_work_location" class="update_work_location" @else id="create_work_location" class="create_work_location" @endif>
+
+    @if (isset($item))
+        <input type="hidden" name="url" id="url" value="{{route('master.workLocation.update', $item->id)}}">
+        @method('PUT')
+    @endif
     <div class="modal-body">	
         
 

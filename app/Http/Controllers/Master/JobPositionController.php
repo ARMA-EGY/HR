@@ -86,9 +86,23 @@ class JobPositionController extends Controller
     
     //-------------- Update Data  ---------------\\
 
-    public function update()
+    public function update(Request $request, JobPositions $jobPosition)
     {
+        $jobPosition->update([
+            'name' => $request->job_position,
+            'job_description' => $request->job_description,
+            'department_id' => $request->department_id,
+            'work_address_id' => $request->work_address_id,
+            'email' => $request->email_alias,
+            'expected_new_employees' => $request->expected_new_employees,
+            'recruiter_id' => $request->recruiter_id,
+            'published' => $request->is_published,
+        ]);
         
+
+        $rsData = $this->returnData('jobPosition', $jobPosition,'job position updated successfully');
+
+        return response()->json($rsData, 200);  
     }
 
     
@@ -100,13 +114,30 @@ class JobPositionController extends Controller
         $departments       = Department::orderBy('id','desc')->get();
         $countries       = Countries::all();
         $workAddresses = WorkAddress::orderBy('id','desc')->get();
+        $item;
+        $jobPositionForm;
+        
+        if(isset($request->id))
+        {
+            $item =  JobPositions::find($request->id);
 
-        $jobPositionForm = view('master.components.jobPosition',[
-            'workAddresses' => $workAddresses,
-            'countries' => $countries,
-            'departments' => $departments,
-            'recruiters' => $recruiters,
-        ])->render();
+            $jobPositionForm = view('master.components.jobPosition',[
+                'item' => $item,
+                'workAddresses' => $workAddresses,
+                'countries' => $countries,
+                'departments' => $departments,
+                'recruiters' => $recruiters,
+            ])->render();
+
+        }else{
+            $jobPositionForm = view('master.components.jobPosition',[
+                'workAddresses' => $workAddresses,
+                'countries' => $countries,
+                'departments' => $departments,
+                'recruiters' => $recruiters,
+            ])->render();
+        }
+
 
         $rsData = $this->returnData('jobPositionForm', $jobPositionForm);
         return response()->json($rsData, 200);

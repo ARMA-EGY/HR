@@ -148,10 +148,19 @@ class WorkAddressesController extends Controller
 
     public function update(Request $request, WorkAddress $workAddress)
     {
+        $individual_company;
+        if($request->type == 'individual')
+        {
+            $individual_company = 1;
+        }elseif($request->type == 'company')
+        {
+            $individual_company = 2;
+        }
+
         $workAddress->update([
-            'individual_company' => $request->individual_company,
-            'name' => $request->name,
-            'address_type_id' => $request->address_type_id,
+            'individual_company' => $individual_company,
+            'name' => $request->address_name,
+            'address_type_id' => $request->Address_id,
             'street' => $request->street,
             'street2' => $request->street2,
             'city' => $request->city,
@@ -184,15 +193,31 @@ class WorkAddressesController extends Controller
         $titles        = Title::orderBy('id','desc')->get();
         $tags          = Tag::orderBy('id','desc')->get();
         $contractTypes = ContractTypes::orderBy('id','desc')->get();
-        
+        $item;
+        $workAddressForm;
 
-        $workAddressForm = view('master.components.workAddress',[
-            'countries' => $countries,
-            'address_type' => $address_type,
-            'titles' => $titles,
-            'tags' => $tags,
-            'contractTypes' => $contractTypes,
-        ])->render();
+        if(isset($request->id))
+        {
+            $item =  WorkAddress::find($request->id);
+
+            $workAddressForm = view('master.components.workAddress',[
+                'item' => $item,
+                'countries' => $countries,
+                'address_type' => $address_type,
+                'titles' => $titles,
+                'tags' => $tags,
+                'contractTypes' => $contractTypes,
+            ])->render();
+        }else{
+            $workAddressForm = view('master.components.workAddress',[
+                'countries' => $countries,
+                'address_type' => $address_type,
+                'titles' => $titles,
+                'tags' => $tags,
+                'contractTypes' => $contractTypes,
+            ])->render();      
+        }
+
 
         $rsData = $this->returnData('workAddressForm', $workAddressForm);
         return response()->json($rsData, 200);

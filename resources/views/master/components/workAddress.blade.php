@@ -6,9 +6,14 @@
         <h4 class="modal-title text-left"> Work Address</h4>
         <button type="button" class="close btn btn-danger btn-sm" data-bs-dismiss="modal" aria-hidden="true">×</button>
     </div>
-    <form id="create_work_address" class="create_work_address">
+    <form  @if (isset($item)) id="update_work_address" class="update_work_address" @else id="create_work_address" class="create_work_address" @endif>
     <div class="modal-body">	
-        
+    
+
+    @if (isset($item))
+        <input type="hidden" name="url" id="url" value="{{route('master.workAddresses.update', $item->id)}}">
+        @method('PUT')
+    @endif
 
             <div class="row mx-2">
                   <div class="form-check col-md-3">
@@ -37,7 +42,7 @@
                 <div class="col-md-6">
                 <select class="form-control form-control-sm select2" name="Address_id" id="Address_id">                                                                    
                     @foreach($contractTypes as $contractType)
-                        <option value="{{$contractType->id}}">{{$contractType->name}}</option>
+                        <option value="{{$contractType->id}}" @if (isset($item)) @if($item->Address_id == $contractType->id) selected @endif @endif>{{$contractType->name}}</option>
                     @endforeach
                 </select>
                 </div>
@@ -53,7 +58,7 @@
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input class="form-control form-control-sm" type="text" name="street" placeholder="street...">
+                                    <input class="form-control form-control-sm" type="text" name="street" placeholder="street..." value="{{ isset($item) ? $item->street : old('street') }}">
                                 </div>
                                 <div class="col-md-12">
                                     <input class="form-control form-control-sm" type="text" name="street2" placeholder="street 2...">

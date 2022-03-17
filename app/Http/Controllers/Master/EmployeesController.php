@@ -17,6 +17,7 @@ use App\Models\MaritalStatus;
 use App\Models\CertificateLevel;
 use App\Models\EmployeesTypes;
 use App\Models\Language;
+use App\Models\JobPositions;
 
 
 use App\User;
@@ -78,6 +79,7 @@ class EmployeesController extends Controller
         $certificateLevels = CertificateLevel::orderBy('id','desc')->get();
         $employeesTypes = EmployeesTypes::orderBy('id','desc')->get();
         $languages = Language::orderBy('id','desc')->get();
+        $jobPositions = JobPositions::orderBy('id','desc')->get();
 
 
         return view('master.employee.create',[
@@ -91,7 +93,8 @@ class EmployeesController extends Controller
             'maritalStatuses' => $maritalStatuses,
             'certificateLevels' => $certificateLevels,
             'employeesTypes' => $employeesTypes,
-            'languages' => $languages,           
+            'languages' => $languages,
+            'jobPositions' => $jobPositions,           
         ]);
     }
 
@@ -116,6 +119,8 @@ class EmployeesController extends Controller
             'working_hour_id' => $request->working_hour_id,
             'address_id' => $request->address_id,
             'language_id' => $request->language_id,
+            'email' => $request->email,
+            'phone' => $request->phone,
             'home_work_distance' => $request->home_work_distance,
 
             'nationality_id' => $request->nationality_id,
@@ -139,6 +144,9 @@ class EmployeesController extends Controller
             'field_of_study' => $request->field_of_study,
             'school' => $request->school,
             'type_id' => $request->type_id,
+            'pin_code' => $request->pin_code,
+            'badge_id' => $request->badge_id,
+            'job_position_id' => $request->job_position_id,
             
         ]);
         //dd($employee);
@@ -154,37 +162,40 @@ class EmployeesController extends Controller
     {
 		$managers       = User::orderBy('id','desc')->get();
         $departments       = Department::orderBy('id','desc')->get();
-        $countries       = Countries::orderBy('id','desc')->get();
-        $employeeWorkAddresses = WorkAddress::orderBy('id','desc')->get();
+        $countries       = Countries::all();
+        $workAddress = WorkAddress::orderBy('id','desc')->get();
         $tags       = Tag::orderBy('id','desc')->get();
-        $employeeWorkLocations = EmployeeWorkLocations::orderBy('id','desc')->get();
+        $workLocations = WorkLocation::orderBy('id','desc')->get();
         $workingHours = WorkingHours::orderBy('id','desc')->get();
         $maritalStatuses = MaritalStatus::orderBy('id','desc')->get();
-        $certificateLevel = CertificateLevel::orderBy('id','desc')->get();
+        $certificateLevels = CertificateLevel::orderBy('id','desc')->get();
         $employeesTypes = EmployeesTypes::orderBy('id','desc')->get();
+        $languages = Language::orderBy('id','desc')->get();
+        $jobPositions = JobPositions::orderBy('id','desc')->get();
 
 		return view('master.employee.create', [
             'item' => $employee,
             'managers' => $managers,
             'departments' => $departments,
             'countries' => $countries,
-            'employeeWorkAddresses' => $employeeWorkAddresses,
+            'workAddress' => $workAddress,
             'tags' => $tags,
-            'employeeWorkLocations' => $employeeWorkLocations,
+            'workLocations' => $workLocations,
             'workingHours' => $workingHours,
             'maritalStatuses' => $maritalStatuses,
             'certificateLevels' => $certificateLevels,
             'employeesTypes' => $employeesTypes,
+            'languages' => $languages,
+            'jobPositions' => $jobPositions,
             ]);
     }
 
     
     //-------------- Update Data  ---------------\\
 
-    public function update(UpdateRequest $request, Employee $employee)
+    public function update(Request $request, Employee $employee)
     {
-
-        $department->update([
+        $employee->update([
             'name' => $request->name,
             'job_position' => $request->job_position,
             'work_mobile' => $request->work_mobile,
@@ -201,6 +212,8 @@ class EmployeesController extends Controller
             'time_zone_id' => $request->time_zone_id,
             'address_id' => $request->address_id,
             'language_id' => $request->language_id,
+            'email' => $request->email,
+            'phone' => $request->phone,
             'home_work_distance' => $request->home_work_distance,
 
             'nationality_id' => $request->nationality_id,
@@ -224,6 +237,9 @@ class EmployeesController extends Controller
             'field_of_study' => $request->field_of_study,
             'school' => $request->school,
             'type_id' => $request->type_id,
+            'pin_code' => $request->pin_code,
+            'badge_id' => $request->badge_id,
+            'job_position_id' => $request->job_position_id,
         ]);
 		
 		session()->flash('success', 'Employee updated successfully');

@@ -69,7 +69,7 @@
                                         <div class="row">
                                             <div class="col-sm-8 col-10">
                                                 <div class="mb-4">
-                                                    <input id="contract_reference" name="reference" type="text" placeholder="Contract Reference" class="form-control">
+                                                    <input id="contract_reference" name="reference" type="text" placeholder="Contract Reference" class="form-control" value="{{ isset($item) ? $item->reference : old('reference') }}">
                                                 </div>
                                             </div>
                                             <div class="col-sm-4 col-2">
@@ -103,7 +103,7 @@
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="employee_id" id="employee_id">
                                                 @foreach($employees as $employee)
-                                                    <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                    <option value="{{$employee->id}}" @if (isset($item)) @if($item->employee_id == $employee->id) selected @endif @endif>{{$employee->name}}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
@@ -111,7 +111,7 @@
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="department_id" id="department_id">
                                                 @foreach($departments as $department)
-                                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                                    <option value="{{$department->id}}" @if (isset($item)) @if($item->department_id == $department->id) selected @endif @endif>{{$department->name}}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
@@ -120,13 +120,13 @@
                                         <div class="row">
                                             <label for="contract_start_date" class="col-md-2 col-form-label pb-2 pt-1">Contract Start Date</label>
                                             <div class="col-md-4">
-                                                <input class="form-control form-control-sm" type="date" name="contract_start_date" id="contract_start_date">
+                                                <input class="form-control form-control-sm" type="date" name="contract_start_date" id="contract_start_date" value="{{ isset($item) ? $item->contract_start_date : old('contract_start_date') }}">
                                             </div>
                                             <label for="job_position_id" class="col-md-2 col-form-label pb-2 pt-1">Job Position</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="job_position_id" id="job_position_id">
                                                 @foreach($jobPositions as $jobPosition)
-                                                    <option value="{{$jobPosition->id}}">{{$jobPosition->name}}</option>
+                                                    <option value="{{$jobPosition->id}}" @if (isset($item)) @if($item->job_position_id == $jobPosition->id) selected @endif @endif>{{$jobPosition->name}}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
@@ -135,13 +135,13 @@
                                         <div class="row">
                                             <label for="contract_end_date" class="col-md-2 col-form-label pb-2 pt-1">Contract End Date</label>
                                             <div class="col-md-4">
-                                                <input class="form-control form-control-sm" type="date" name="contract_end_date" id="contract_end_date">
+                                                <input class="form-control form-control-sm" type="date" name="contract_end_date" id="contract_end_date" value="{{ isset($item) ? $item->contract_end_date : old('contract_end_date') }}">
                                             </div>
                                             <label for="contract_type_id" class="col-md-2 col-form-label pb-2 pt-1">Contract Type</label>
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="contract_type_id" id="contract_type_id">
                                                 @foreach($contractTypes as $contractType)
-                                                    <option value="{{$contractType->id}}">{{$contractType->name}}</option>
+                                                    <option value="{{$contractType->id}}" @if (isset($item)) @if($item->contract_type_id == $contractType->id) selected @endif @endif>{{$contractType->name}}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
@@ -152,7 +152,7 @@
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="salary_structure_type_id" id="salary_structure_type_id">
                                                 @foreach($salaryStructureTypes as $salaryStructureType)
-                                                    <option value="{{$salaryStructureType->id}}">{{$salaryStructureType->contract_type}}</option>
+                                                    <option value="{{$salaryStructureType->id}}" @if (isset($item)) @if($item->salary_structure_type_id == $salaryStructureType->id) selected @endif @endif>{{$salaryStructureType->contract_type}}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
@@ -160,7 +160,7 @@
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="hr_responsible_id" id="hr_responsible_id">
                                                 @foreach($employees as $employee)
-                                                    <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                    <option value="{{$employee->id}}" @if (isset($item)) @if($item->hr_responsible_id == $employee->id) selected @endif @endif>{{$employee->name}}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
@@ -171,7 +171,7 @@
                                             <div class="col-md-4">
                                                 <select class="form-control form-control-sm select2" name="working_hour_id" id="working_schedule_id">
                                                 @foreach($workingHours as $workingHour)
-                                                    <option value="{{$workingHour->id}}">{{$workingHour->name}}</option>
+                                                    <option value="{{$workingHour->id}}" @if (isset($item)) @if($item->working_schedule_id == $workingHour->id) selected @endif @endif>{{$workingHour->name}}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
@@ -201,7 +201,7 @@
                                                     <div class="col-md-12">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <textarea class="form-control" name="notes" rows="5"></textarea>
+                                                                <textarea class="form-control" name="notes" rows="5">{{ isset($item) ? $item->notes : old('notes') }}</textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -213,7 +213,7 @@
                                                 <div class="row mt-4">
                                                     <label for="wage" class="col-md-2 col-3 col-form-label pt-1">Wage</label>
                                                     <div class="col-md-4 col-6">
-                                                        <input class="form-control form-control-sm" type="number" step="0.01" placeholder="0.00" name="wage" id="wage">
+                                                        <input class="form-control form-control-sm" type="number" step="0.01" placeholder="0.00" name="wage" id="wage" value="{{ isset($item) ? $item->wage : old('wage') }}">
                                                     </div>
                                                     <label for="wage" class="col-md-3 col-3 text-sm pt-1">/ Month</label>
                                                 </div>

@@ -125,19 +125,20 @@ class ContractsController extends Controller
     {
 		$employees       = User::orderBy('id','desc')->get();
         $departments       = Department::orderBy('id','desc')->get();
-        $countries       = Countries::orderBy('id','desc')->get();
+        $countries       = Countries::all();
 
-        $salaryStructureType       = SalaryStructureType::orderBy('id','desc')->get();
+        $salaryStructureTypes       = SalaryStructureType::orderBy('id','desc')->get();
         $workingHours = WorkingHours::orderBy('id','desc')->get();
         $jobPositions = JobPositions::orderBy('id','desc')->get();
         $contractTypes = ContractTypes::orderBy('id','desc')->get();
 
-		return view('master.employee.create', [
-            'managers' => $employees,
+		return view('master.contract.create', [
+            'item' => $contract,
+            'employees' => $employees,
             'departments' => $departments,
             'countries' => $countries,
 
-            'salaryStructureType' => $salaryStructureType,
+            'salaryStructureTypes' => $salaryStructureTypes,
             'workingHours' => $workingHours,
             'jobPositions' => $jobPositions,
             'contractTypes' => $contractTypes, 

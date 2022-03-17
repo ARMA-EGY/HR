@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\Countries;
 use App\Models\WorkAddress;
+use App\Models\workLocation;
 
 class AddressController extends Controller
 {
@@ -89,9 +90,28 @@ class AddressController extends Controller
     
     //-------------- Update Data  ---------------\\
 
-    public function update()
+    public function update(Request $request, WorkAddress $address)
     {
         
+        $address->update([
+            'name' => $request->address_name,
+            'street' => $request->street,
+            'street2' => $request->street2,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip' => $request->zip,
+            'country_id' => $request->country_id,
+            'phone' => $request->phone,
+            'mobile' => $request->mobile,
+            'email' => $request->email,
+            'website' => $request->website,
+            'title_id' => $request->title_id,
+            'tag_id' => $request->tag_id,
+        ]);
+        
+        $rsData = $this->returnData('address', $address,'Address updated successfully');
+
+        return response()->json($rsData, 200);
     }
 
     
@@ -100,10 +120,23 @@ class AddressController extends Controller
     public function get(Request $request)
     {
         $countries     = Countries::all();
+        $item;
+        $addressForm;
+        
+        if(isset($request->id))
+        {
+            $item =  WorkAddress::find($request->id);
+            $addressForm = view('master.components.address',[
+                'item' => $item,
+                'countries' => $countries,
+            ])->render();
 
-        $addressForm = view('master.components.address',[
-            'countries' => $countries,
-        ])->render();
+        }else{
+            $addressForm = view('master.components.address',[
+                'countries' => $countries,
+            ])->render();
+        }
+
 
         $rsData = $this->returnData('addressForm', $addressForm);
         return response()->json($rsData, 200);
