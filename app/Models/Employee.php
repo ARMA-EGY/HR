@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Department;
 
 class Employee extends Model
 {
@@ -31,6 +32,11 @@ class Employee extends Model
 
     public function activeContracts(){
         return $this->hasMany('App\Models\Contract','employee_id')->where('status_id','==', 2);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
     }
 
 }

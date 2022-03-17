@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Employee;
+use App\Models\Department;
 
 class Contract extends Model
 {
@@ -18,7 +19,12 @@ class Contract extends Model
 
     public function employee()
     {
-        return $this->belongsTo('App\Models\Employee','employee_id');
+        return $this->belongsTo(Employee::class,'employee_id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class,'parent_department_id');
     }
 
 }

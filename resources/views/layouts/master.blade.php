@@ -233,18 +233,18 @@
         <script src="{{asset('assets/libs/metismenu/metisMenu.min.js')}}"></script>
         <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
         <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
-
         <!-- select 2 plugin -->
         <script src="{{asset('assets/libs/select2/js/select2.min.js')}}"></script>
-
         <!-- dropzone plugin -->
         <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
-
         <!-- init js -->
         <script src="{{asset('assets/js/pages/ecommerce-select2.init.js')}}"></script>
-      
         <!-- App js -->
         <script src="{{asset('assets/js/app.js')}}"></script>
+        <!-- DataTables js -->
+        <script src="{{asset('assets/js/dataTables.min.js')}}"></script>
+        <script src="{{asset('assets/js/dataTables.bootstrap4.min.js')}}"></script>
+        <!-- Sweet Alert 2 js -->
         <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
         <script>
@@ -252,6 +252,11 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
+                });
+
+                $(document).ready(function() 
+                {
+                    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
                 });
         </script>
 

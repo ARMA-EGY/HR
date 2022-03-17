@@ -36,7 +36,6 @@ class WorkingHoursController extends Controller
      */
     public function index()
     {
-
 		$workingHours       = WorkingHours::orderBy('id','desc')
         ->get();
 
