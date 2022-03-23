@@ -101,11 +101,10 @@ class WorkLocationController extends Controller
     //-------------- Update Data  ---------------\\
 
     public function update(Request $request, workLocation $workLocation)
-    {
-        dd($request->name);
+    {   
         $workLocation->update([
-            'name' => $request->name,
-            'work_address_id' => $request->work_address_id,
+            'name' => $request->work_location,
+            'work_address_id' => $request->work_address,
             'location_number' => $request->location_number,
         ]);
 		

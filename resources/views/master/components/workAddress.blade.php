@@ -33,7 +33,7 @@
             <div class="row mt-4">
                 <label for="address_name" class="col-md-3 col-form-label pb-2 pt-1">Address Name</label>
                 <div class="col-md-6">
-                    <input class="form-control form-control-sm" type="text" name="address_name" id="address_name">
+                    <input class="form-control form-control-sm" type="text" name="address_name" id="address_name" value="{{ isset($item) ? $item->name : old('name') }}">
                 </div>
             </div>
 
@@ -61,16 +61,16 @@
                                     <input class="form-control form-control-sm" type="text" name="street" placeholder="street..." value="{{ isset($item) ? $item->street : old('street') }}">
                                 </div>
                                 <div class="col-md-12">
-                                    <input class="form-control form-control-sm" type="text" name="street2" placeholder="street 2...">
+                                    <input class="form-control form-control-sm" type="text" name="street2" placeholder="street 2..." value="{{ isset($item) ? $item->street2 : old('street2') }}">
                                 </div>
                                 <div class="col-md-4 pr-0">
-                                    <input class="form-control form-control-sm" type="text" name="city" placeholder="city">
+                                    <input class="form-control form-control-sm" type="text" name="city" placeholder="city" value="{{ isset($item) ? $item->city : old('city') }}">
                                 </div>
                                 <div class="col-md-4 p-0">
-                                    <input class="form-control form-control-sm" type="text" name="state" placeholder="state">
+                                    <input class="form-control form-control-sm" type="text" name="state" placeholder="state" value="{{ isset($item) ? $item->state : old('state') }}">
                                 </div>
                                 <div class="col-md-4 pl-0">
-                                    <input class="form-control form-control-sm" type="text" name="zip" placeholder="zip">
+                                    <input class="form-control form-control-sm" type="text" name="zip" placeholder="zip" value="{{ isset($item) ? $item->zip : old('zip') }}">
                                 </div>
                                 <div class="col-md-12">   
                                 <select class="form-control form-control-sm select2" name="country_id" id="country_id">                                                                    
@@ -86,7 +86,7 @@
                     <div class="row mt-2">
                         <label for="tax_id" class="col-md-4 col-form-label pb-2 pt-1">Tax ID</label>
                         <div class="col-md-8">
-                            <input class="form-control form-control-sm" type="text" name="tax_id" id="tax_id">
+                            <input class="form-control form-control-sm" type="text" name="tax_id" id="tax_id" value="{{ isset($item) ? $item->tax_id : old('tax_id') }}">
                         </div>
                     </div>
                     
@@ -97,35 +97,35 @@
                     <div class="row individual">
                         <label for="job_position" class="col-md-4 col-form-label pb-2 pt-1">Job Position</label>
                         <div class="col-md-8">
-                            <input class="form-control form-control-sm individual-input" type="text" name="job_position" id="job_position">
+                            <input class="form-control form-control-sm individual-input" type="text" name="job_position" id="job_position" value="{{ isset($item) ? $item->job_position : old('job_position') }}">
                         </div>
                     </div>
 
                     <div class="row">
                         <label for="phone" class="col-md-4 col-form-label pb-2 pt-1">Phone</label>
                         <div class="col-md-8">
-                            <input class="form-control form-control-sm" type="text" name="phone" id="phone">
+                            <input class="form-control form-control-sm" type="text" name="phone" id="phone" value="{{ isset($item) ? $item->phone : old('phone') }}">
                         </div>
                     </div>
 
                     <div class="row">
                         <label for="mobile" class="col-md-4 col-form-label pb-2 pt-1">Mobile</label>
                         <div class="col-md-8">
-                            <input class="form-control form-control-sm" type="text" name="mobile" id="mobile">
+                            <input class="form-control form-control-sm" type="text" name="mobile" id="mobile" value="{{ isset($item) ? $item->mobile : old('mobile') }}">
                         </div>
                     </div>
 
                     <div class="row">
                         <label for="address_email" class="col-md-4 col-form-label pb-2 pt-1">Email</label>
                         <div class="col-md-8">
-                            <input class="form-control form-control-sm" type="email" name="email" id="email">
+                            <input class="form-control form-control-sm" type="email" name="email" id="email" value="{{ isset($item) ? $item->email : old('email') }}">
                         </div>
                     </div>
 
                     <div class="row">
                         <label for="website" class="col-md-4 col-form-label pb-2 pt-1">Website</label>
                         <div class="col-md-8">
-                            <input class="form-control form-control-sm" type="text" name="website" id="website">
+                            <input class="form-control form-control-sm" type="text" name="website" id="website" value="{{ isset($item) ? $item->website : old('website') }}">
                         </div>
                     </div>
 
@@ -134,7 +134,7 @@
                         <div class="col-md-8">
                             <select class="form-control form-control-sm select2" name="title_id" id="title_id">                                                                    
                                 @foreach($titles as $title)
-                                    <option value="{{$title->id}}">{{$title->name}}</option>
+                                    <option value="{{$title->id}}" @if (isset($item)) @if($item->title_id == $title->id) selected @endif @endif>{{$title->name}}</option>
                                 @endforeach
                             </select>
                         </div>

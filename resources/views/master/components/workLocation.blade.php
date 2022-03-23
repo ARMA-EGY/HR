@@ -16,7 +16,7 @@
             <div class="row">
                 <label for="work_location" class="col-md-3 col-form-label pb-2 pt-1">Work Location</label>
                 <div class="col-md-6">
-                    <input class="form-control form-control-sm" type="text" name="work_location" id="contract_start_date">
+                    <input class="form-control form-control-sm" type="text" name="work_location" id="work_location" value="{{ isset($item) ? $item->name : old('name') }}">
                 </div>
             </div>
 
@@ -25,7 +25,7 @@
                 <div class="col-md-6">
                     <select class="form-control form-control-sm select2" name="work_address" id="work_address">
                         @foreach($workAddresses as $workAddress)
-                            <option value="{{$workAddress->id}}">{{$workAddress->name}}</option>
+                            <option value="{{$workAddress->id}}" @if (isset($item)) @if($item->work_address == $workAddress->id) selected @endif @endif>{{$workAddress->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -34,7 +34,7 @@
             <div class="row">
                 <label for="location_number" class="col-md-3 col-form-label pb-2 pt-1">Location Number</label>
                 <div class="col-md-6">
-                    <input class="form-control form-control-sm" type="text" name="location_number" id="location_number">
+                    <input class="form-control form-control-sm" type="text" name="location_number" id="location_number" value="{{ isset($item) ? $item->location_number : old('location_number') }}">
                 </div>
             </div>
 
