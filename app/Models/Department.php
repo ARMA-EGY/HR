@@ -12,7 +12,7 @@ class Department extends Model
     
     protected $fillable = 
     [
-        'name','parent_department_id','manager_id','employee_appraisal_template','manager_appraisal_template'
+        'name','parent_department_id','manager_id','custom_appraisal','employee_appraisal_template','manager_appraisal_template'
     ];
 
     public function manager()

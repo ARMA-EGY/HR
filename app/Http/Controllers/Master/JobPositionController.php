@@ -66,11 +66,20 @@ class JobPositionController extends Controller
             'email' => $request->email_alias,
             'expected_new_employees' => $request->expected_new_employees,
             'recruiter_id' => $request->recruiter_id,
-            'published' => $request->is_published,
+            'is_published' => $request->is_published,
         ]);
         
+		$items     = JobPositions::orderBy('id','desc')->get();
 
-        $rsData = $this->returnData('jobPositions', $jobPositions,'Address created successfully');
+        $data = view('master.components.dropDown',[
+            'items'         => $items,
+            'id'            => $jobPositions->id,
+            'data_link'     => $request->data_link,
+            'input_name'    => $request->input_name,
+            'id_response'   => $request->id_response,
+        ])->render();
+
+        $rsData = $this->returnData('data', $data,'Address created successfully');
 
         return response()->json($rsData, 200);  
     }
@@ -96,11 +105,20 @@ class JobPositionController extends Controller
             'email' => $request->email_alias,
             'expected_new_employees' => $request->expected_new_employees,
             'recruiter_id' => $request->recruiter_id,
-            'published' => $request->is_published,
+            'is_published' => $request->is_published,
         ]);
         
+		$items     = JobPositions::orderBy('id','desc')->get();
 
-        $rsData = $this->returnData('jobPosition', $jobPosition,'job position updated successfully');
+        $data = view('master.components.dropDown',[
+            'items'         => $items,
+            'id'            => $jobPosition->id,
+            'data_link'     => $request->data_link,
+            'input_name'    => $request->input_name,
+            'id_response'   => $request->id_response,
+        ])->render();
+
+        $rsData = $this->returnData('data', $data,'job position updated successfully');
 
         return response()->json($rsData, 200);  
     }
@@ -111,9 +129,9 @@ class JobPositionController extends Controller
     public function get(Request $request)
     {
         $recruiters       = Employee::orderBy('id','desc')->get();
-        $departments       = Department::orderBy('id','desc')->get();
-        $countries       = Countries::all();
-        $workAddresses = WorkAddress::orderBy('id','desc')->get();
+        $departments      = Department::orderBy('id','desc')->get();
+        $countries        = Countries::all();
+        $workAddresses    = WorkAddress::orderBy('id','desc')->get();
         $item;
         $jobPositionForm;
         

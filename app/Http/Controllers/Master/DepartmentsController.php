@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Department\AddRequest;
 use App\Http\Requests\Department\UpdateRequest;
 use App\Models\Department;
+use App\Models\Employee;
 use App\User;
 
 class DepartmentsController extends Controller
@@ -56,8 +57,8 @@ class DepartmentsController extends Controller
 
     public function create()
     {
-		$managers       = User::orderBy('id','desc')->get();
-        $departments       = Department::orderBy('id','desc')->get();
+		$managers       = Employee::orderBy('id','desc')->get();
+        $departments    = Department::orderBy('id','desc')->get();
         return view('master.department.create',[
             'managers' => $managers,
             'departments' => $departments,
@@ -87,8 +88,8 @@ class DepartmentsController extends Controller
     
     public function edit(Department $department)
     {
-		$managers       = User::orderBy('id','desc')->get();
-        $departments       = Department::orderBy('id','desc')->get();
+		$managers       = Employee::orderBy('id','desc')->get();
+        $departments    = Department::orderBy('id','desc')->get();
 		return view('master.department.create', [
             'item' => $department,
             'managers' => $managers,

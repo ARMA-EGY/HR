@@ -94,7 +94,6 @@ class WorkAddressesController extends Controller
             $individual_company = 2;
         }
 
-
         $workAddress =  WorkAddress::create([
             'individual_company' => $individual_company,
             'name' => $request->address_name,
@@ -115,8 +114,18 @@ class WorkAddressesController extends Controller
             'tag_id' => $request->tag_id,
         ]);
         
+		$items     = WorkAddress::orderBy('id','desc')->get();
 
-        $rsData = $this->returnData('workAddress', $workAddress,'Address created successfully');
+        $data = view('master.components.dropDown',[
+            'items'         => $items,
+            'id'            => $workAddress->id,
+            'data_link'     => $request->data_link,
+            'input_name'    => $request->input_name,
+            'id_response'   => $request->id_response,
+        ])->render();
+        
+
+        $rsData = $this->returnData('data', $data,'Address created successfully');
 
         return response()->json($rsData, 200);
     }
@@ -176,9 +185,18 @@ class WorkAddressesController extends Controller
             'title_id' => $request->title_id,
             'tag_id' => $request->tag_id,
         ]);
-		
+        
+		$items     = WorkAddress::orderBy('id','desc')->get();
 
-        $rsData = $this->returnData('workAddress', $workAddress,'Address updated successfully');
+        $data = view('master.components.dropDown',[
+            'items'         => $items,
+            'id'            => $workAddress->id,
+            'data_link'     => $request->data_link,
+            'input_name'    => $request->input_name,
+            'id_response'   => $request->id_response,
+        ])->render();
+
+        $rsData = $this->returnData('data', $data,'Address updated successfully');
           
         return response()->json($rsData, 200);
     }

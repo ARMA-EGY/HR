@@ -36,12 +36,12 @@ class ContractsController extends Controller
     public function index()
     {
 
-		$employees       = Employee::orderBy('id','desc')
+		$contracts       = Contract::orderBy('id','desc')
         ->get();
 
         return view('master.contract.index', [
-            'items' => $employees,
-            'items_count' => count($employees),
+            'items' => $contracts,
+            'items_count' => count($contracts),
             'type' => 'all',
         ]);
     }
@@ -110,6 +110,8 @@ class ContractsController extends Controller
             'notes' => $request->notes,
             'wage' => $request->wage,
             'status_id' => $request->status_id,
+            'status' => $request->status,
+            'disable' => $request->disable,
             
         ]);
         
@@ -167,6 +169,8 @@ class ContractsController extends Controller
             'notes' => $request->notes,
             'wage' => $request->wage,
             'status_id' => $request->status_id,
+            'status' => $request->status,
+            'disable' => $request->disable,
         ]);
 		
 		session()->flash('success', 'Contract updated successfully');

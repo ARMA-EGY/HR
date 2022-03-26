@@ -8,11 +8,18 @@
     </div>
 
     <div class="modal-body">	
-        <form>
+
+        <form class="popup_form">
         @if (isset($item))
-        <input type="hidden" name="url" id="url" value="{{route('master.workingHours.update', $item->id)}}">
-        @method('PUT')
-    @endif
+            <input type="hidden" name="url" id="url" value="{{route('master.workingHours.update', $item->id)}}">
+            @method('PUT')
+        @else
+                <input type="hidden" name="url" id="url" value="{{route('master.workingHours.store')}}">
+        @endif  
+            <input type="hidden" name="data_link" value="{{route('master.getWorkingHours')}}"> 
+            <input type="hidden" name="input_name" value="working_hour_id"> 
+            <input type="hidden" id="id_response" value="#working_hour_response"> 
+
             <div class="row">
                 <label for="schedule_name" class="col-md-3 col-form-label pb-2 pt-1">Schedule Name</label>
                 <div class="col-md-6">
@@ -72,7 +79,7 @@
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-sm">Save</button>
+        <button type="button" class="btn btn-primary btn-sm submit2">Save</button>
         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
     </div>
 </div>

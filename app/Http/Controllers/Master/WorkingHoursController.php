@@ -72,13 +72,22 @@ class WorkingHoursController extends Controller
 
     public function store(Request $request)
     {
-        $workingHour =  WorkAddress::create([
+        $workingHour =  WorkingHours::create([
             'name' => $request->name,
             'average_hour_per_day' => $request->average_hour_per_day,
         ]);
         
+		$items     = WorkLocation::orderBy('id','desc')->get();
 
-        $rsData = $this->returnData('workingHour', $workingHour,'Working Hour created successfully');
+        $data = view('master.components.dropDown',[
+            'items'         => $items,
+            'id'            => $workingHour->id,
+            'data_link'     => $request->data_link,
+            'input_name'    => $request->input_name,
+            'id_response'   => $request->id_response,
+        ])->render();
+
+        $rsData = $this->returnData('data', $data,'Working Hour created successfully');
 
         return response()->json($rsData, 200);
     }
@@ -104,9 +113,18 @@ class WorkingHoursController extends Controller
             'name' => $request->name,
             'average_hour_per_day' => $request->average_hour_per_day,
         ]);
-		
+        
+		$items     = WorkLocation::orderBy('id','desc')->get();
 
-        $rsData = $this->returnData('workingHoursForm', $workingHoursForm,'working Hours updated successfully');
+        $data = view('master.components.dropDown',[
+            'items'         => $items,
+            'id'            => $WorkingHours->id,
+            'data_link'     => $request->data_link,
+            'input_name'    => $request->input_name,
+            'id_response'   => $request->id_response,
+        ])->render();
+
+        $rsData = $this->returnData('data', $data,'working Hours updated successfully');
           
         return response()->json($rsData, 200);
     }

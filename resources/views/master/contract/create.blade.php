@@ -49,19 +49,21 @@
                         @endif
 
                                 <ul class="nav nav-pills mb-3 mx-auto contract-status" id="pills-tab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="pills-new-tab" data-bs-toggle="pill" data-bs-target="#pills-new" type="button" role="tab" aria-controls="pills-new" aria-selected="true">New</button>
+                                    <li class="nav-item change_status" data-value="new" role="presentation">
+                                        <button class="nav-link @if (isset($item)) @if($item->status == 'new') active @endif @else active @endif" id="pills-new-tab" data-bs-toggle="pill" data-bs-target="#pills-new" type="button" role="tab" aria-controls="pills-new" aria-selected="true">New</button>
                                     </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="pills-running-tab" data-bs-toggle="pill" data-bs-target="#pills-running" type="button" role="tab" aria-controls="pills-running" aria-selected="false">Running</button>
+                                    <li class="nav-item change_status" data-value="running" role="presentation">
+                                        <button class="nav-link @if (isset($item)) @if($item->status == 'running') active @endif @endif" id="pills-running-tab" data-bs-toggle="pill" data-bs-target="#pills-running" type="button" role="tab" aria-controls="pills-running" aria-selected="false">Running</button>
                                     </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="pills-expired-tab" data-bs-toggle="pill" data-bs-target="#pills-expired" type="button" role="tab" aria-controls="pills-expired" aria-selected="false">Expired</button>
+                                    <li class="nav-item change_status" data-value="expired" role="presentation">
+                                        <button class="nav-link @if (isset($item)) @if($item->status == 'expired') active @endif @endif" id="pills-expired-tab" data-bs-toggle="pill" data-bs-target="#pills-expired" type="button" role="tab" aria-controls="pills-expired" aria-selected="false">Expired</button>
                                     </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false">Cancelled</button>
+                                    <li class="nav-item change_status" data-value="cancelled" role="presentation">
+                                        <button class="nav-link @if (isset($item)) @if($item->status == 'cancelled') active @endif @endif" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false">Cancelled</button>
                                     </li>
                                 </ul>
+                                <input id="status" type="hidden" name="status" value="{{ isset($item) ? $item->status : 'new' }}">
+                                <input id="disable" type="hidden" name="disable" value="{{ isset($item) ? $item->disable : '0' }}">
 
                                 <div class="card card-shadow mb-2">
                                     <div class="card-body">
@@ -75,21 +77,21 @@
                                             <div class="col-sm-4 col-2">
                                                 <div class="dropdown d-inline-block">
                                                     <button type="button" class="btn header-item waves-effect h-30" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <div id="status-circle" class="align-middle status-circle bg-success"></div>
+                                                        <div id="status-circle" class="align-middle status-circle  @if (isset($item)) @if($item->disable == '0') bg-success @elseif($item->disable == '1') bg-danger @elseif($item->disable == '2') bg-secondary @endif @else bg-success @endif"></div>
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <!-- item-->
-                                                        <div class="dropdown-item pointer select-status" data-status="bg-danger">
-                                                            <div class="align-middle status-circle bg-danger"></div>
-                                                            <span class="align-middle">Red</span>
-                                                        </div>
-                                                        <!-- item-->
-                                                        <div class="dropdown-item pointer select-status" data-status="bg-success">
+                                                        <div class="dropdown-item pointer select-status" data-value="0" data-status="bg-success">
                                                             <div class="align-middle status-circle bg-success"></div>
                                                             <span class="align-middle">Green</span>
                                                         </div>
                                                         <!-- item-->
-                                                        <div class="dropdown-item pointer select-status" data-status="bg-secondary">
+                                                        <div class="dropdown-item pointer select-status" data-value="1" data-status="bg-danger">
+                                                            <div class="align-middle status-circle bg-danger"></div>
+                                                            <span class="align-middle">Red</span>
+                                                        </div>
+                                                        <!-- item-->
+                                                        <div class="dropdown-item pointer select-status" data-value="2" data-status="bg-secondary">
                                                             <div class="align-middle status-circle bg-secondary"></div>
                                                             <span class="align-middle">Grey</span>
                                                         </div>
@@ -260,7 +262,15 @@
     $('.select-status').on('click', function () 
     {
        var status = $(this).attr('data-status');
+       var value  = $(this).attr('data-value');
+       $('#disable').val(value);
        $('#status-circle').removeClass('bg-success bg-danger bg-secondary').addClass(status);
+    })
+
+    $('.change_status').on('click', function () 
+    {
+        var status = $(this).attr('data-value');
+        $('#status').val(status);
     })
 </script>
 
