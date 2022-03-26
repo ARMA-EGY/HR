@@ -47,7 +47,22 @@ class AssetsController extends Controller
 
     public function show()
     {
+
+        $employees              = Employee::orderBy('id','desc')->get();
+        $departments            = Department::orderBy('id','desc')->get();
+        $assets                 = Asset::orderBy('id','desc')->get();
+        $assetsCategories       = AssetsCategory::orderBy('id','desc')->get();
+        $maintenanceTeams       = MaintenanceTeam::orderBy('id','desc')->get();
+        $maintenanceTeamMembers = MaintenanceTeamMember::orderBy('id','desc')->get();
+
         return view('master.assets.show',[
+            'item' => $asset,
+            'employees' => $employees,
+            'departments' => $departments,
+            'assets' => $assets,
+            'assetsCategories' => $assetsCategories,
+            'maintenanceTeams' => $maintenanceTeams,
+            'maintenanceTeamMembers' => $maintenanceTeamMembers,
         ]);
     }  
     

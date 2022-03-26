@@ -25,7 +25,7 @@
                 <div class="col-md-6">
                     <select class="form-control form-control-sm select2" name="work_address" id="work_address">
                         @foreach($workAddresses as $workAddress)
-                            <option value="{{$workAddress->id}}" @if (isset($item)) @if($item->work_address == $workAddress->id) selected @endif @endif>{{$workAddress->name}}</option>
+                            <option value="{{$workAddress->id}}" @if (isset($item)) @if($item->work_address_id == $workAddress->id) selected @endif @endif>{{$workAddress->name}}</option>
                         @endforeach
                     </select>
                 </div>

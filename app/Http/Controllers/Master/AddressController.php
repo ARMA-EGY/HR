@@ -107,6 +107,7 @@ class AddressController extends Controller
             'website' => $request->website,
             'title_id' => $request->title_id,
             'tag_id' => $request->tag_id,
+            'language' => $request->language,
         ]);
         
         $rsData = $this->returnData('address', $address,'Address updated successfully');

@@ -86,8 +86,8 @@
                             <label for="language" class="col-md-4 col-form-label pb-2 pt-1">Language</label>
                             <div class="col-md-8">
                                 <select class="form-control form-control-sm select2" name="language" id="language"> 
-                                    <option value="1" @if (isset($item)) @if($item->language == "1") selected @endif @endif>1</option>
-                                    <option value="2" @if (isset($item)) @if($item->language == "2") selected @endif @endif>2</option>
+                                    <option value="english" @if (isset($item)) @if($item->language == "english") selected @endif @endif>english</option>
+                                    <option value="arabic" @if (isset($item)) @if($item->language == "arabic") selected @endif @endif>arabic</option>
                                 </select>
                             </div>
                         </div>
