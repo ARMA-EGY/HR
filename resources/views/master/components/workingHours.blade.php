@@ -7,22 +7,23 @@
         <button type="button" class="close btn btn-danger btn-sm" data-bs-dismiss="modal" aria-hidden="true">×</button>
     </div>
 
-    <div class="modal-body">	
-        <form>
-        @if (isset($item))
+    	
+    <form  @if (isset($item)) id="update_work_hours" class="update_work_hours" @else id="create_work_hours" class="create_work_hours" @endif>
+    <div class="modal-body">   
+    @if (isset($item))
         <input type="hidden" name="url" id="url" value="{{route('master.workingHours.update', $item->id)}}">
         @method('PUT')
     @endif
             <div class="row">
                 <label for="schedule_name" class="col-md-3 col-form-label pb-2 pt-1">Schedule Name</label>
                 <div class="col-md-6">
-                    <input class="form-control form-control-sm" type="text" name="schedule_name" id="schedule_name">
+                    <input class="form-control form-control-sm" type="text" name="schedule_name" id="schedule_name" value="{{ isset($item) ? $item->name : old('name') }}">
                 </div>
             </div>
             <div class="row">
                 <small for="average_hour_per_day" class="col-md-3 col-form-label pb-2 pt-1 text-sm">Average Hour per Day</small>
                 <div class="col-md-6">
-                    <input class="form-control form-control-sm" type="text" name="average_hour_per_day" id="average_hour_per_day">
+                    <input class="form-control form-control-sm" type="text" name="average_hour_per_day" id="average_hour_per_day" value="{{ isset($item) ? $item->average_hour_per_day : old('average_hour_per_day') }}">
                 </div>
             </div>
 
@@ -57,6 +58,31 @@
                                       </tr>
                                     </thead>
                                     <tbody id="table_body">
+                                    @if (isset($item))   
+                                        @foreach($item->WorkingHoursSchedule as $WorkingHourSchedule)
+                                            <tr class="line parent_'+total+'">
+                                                <th class="p-1">
+                                                    <input type="text" name="name[]" value="{{$WorkingHourSchedule->name}}" class="form-control form-control-sm">
+                                                </th>
+                                                <th class="p-1">
+                                                    <input type="text" name="day_of_week[]" value="{{$WorkingHourSchedule->day_of_week}}" class="form-control form-control-sm">
+                                                </th>
+                                                <th class="p-1">
+                                                    <input type="text" name="day_period[]" value="{{$WorkingHourSchedule->day_period}}" class="form-control form-control-sm">
+                                                </th>
+                                                <th class="p-1">
+                                                    <input type="text" name="work_from[]" value="{{$WorkingHourSchedule->work_from}}" class="form-control form-control-sm">
+                                                </th>
+                                                <th class="p-1">
+                                                    <input type="text" name="work_to[]" value="{{$WorkingHourSchedule->work_to}}" class="form-control form-control-sm">
+                                                </th>
+                                                <th class="p-1">
+                                                    <a class="btn btn-sm btn-danger remove-line text-white" data-class="parent_'+total+'">
+                                                    <i class="fa fa-times "></i></a>
+                                                </th>
+                                            </tr>
+                                        @endforeach  
+                                    @endif  
                                     </tbody>
                                   </table>
                             </div>
@@ -67,14 +93,15 @@
 
             </div>
 
-        </form>
+        
 
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-sm">Save</button>
+        <button type="submit" class="btn btn-primary btn-sm">Save</button>
         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
     </div>
+    </form>
 </div>
 
 
