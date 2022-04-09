@@ -57,7 +57,7 @@ class AddressController extends Controller
     public function store(Request $request)
     {
 
-        $workAddress =  WorkAddress::create([
+        $address =  WorkAddress::create([
             'name' => $request->address_name,
             'street' => $request->street,
             'street2' => $request->street2,
@@ -73,8 +73,18 @@ class AddressController extends Controller
             'tag_id' => $request->tag_id,
         ]);
         
+		$items     = WorkAddress::orderBy('id','desc')->get();
 
-        $rsData = $this->returnData('workAddress', $workAddress,'Address created successfully');
+        $data = view('master.components.dropDown',[
+            'items'         => $items,
+            'id'            => $address->id,
+            'data_link'     => $request->data_link,
+            'input_name'    => $request->input_name,
+            'id_response'   => $request->id_response,
+        ])->render();
+        
+
+        $rsData = $this->returnData('data', $data,'Address created successfully');
 
         return response()->json($rsData, 200);
     }
@@ -92,7 +102,6 @@ class AddressController extends Controller
 
     public function update(Request $request, WorkAddress $address)
     {
-        
         $address->update([
             'name' => $request->address_name,
             'street' => $request->street,
@@ -110,7 +119,17 @@ class AddressController extends Controller
             'language' => $request->language,
         ]);
         
-        $rsData = $this->returnData('address', $address,'Address updated successfully');
+		$items     = WorkAddress::orderBy('id','desc')->get();
+
+        $data = view('master.components.dropDown',[
+            'items'         => $items,
+            'id'            => $address->id,
+            'data_link'     => $request->data_link,
+            'input_name'    => $request->input_name,
+            'id_response'   => $request->id_response,
+        ])->render();
+        
+        $rsData = $this->returnData('data', $data,'Address updated successfully');
 
         return response()->json($rsData, 200);
     }

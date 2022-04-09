@@ -71,8 +71,8 @@
                                                         <td>{{$loop->iteration}}</td>
                                                         <td><a href="#" class="text-body fw-bold">{{ !empty($item->employee) ? $item->employee->name:'-' }}</a> </td>
                                                         <td>{{ !empty($item->department) ? $item->department->name:'-' }}</td>
-                                                        <td>{{$item->start_date}}</td>
-                                                        <td>{{$item->end_date}}</td>
+                                                        <td>{{$item->contract_start_date}}</td>
+                                                        <td>{{$item->contract_end_date}}</td>
                                                         <td>
                                                             <div class="d-flex gap-3">
                                                                 <a data-toggle="tooltip" data-placement="top" title="{{__('master.VIEW-DETAILS')}}" href="{{route('master.contract.show', $item->id)}}" class="btn-primary py-1 px-2 btn-rounded"><i class="mdi mdi-eye font-size-18"></i></a>

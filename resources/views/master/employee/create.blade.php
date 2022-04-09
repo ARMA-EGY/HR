@@ -152,18 +152,20 @@
                                                 <p class="card-title-desc horizontal_separator mt-4 text-sm">Location</p>
                                                 <div class="row">
                                                     <label for="work_address_id" class="col-md-2 col-form-label pb-2 pt-1">Work Address</label>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-4" id="work_address_response">
                                                         <i class="bx bx-link-external text-primary pointer external-link" data-link="{{route('master.getWorkAddress')}}" data-select="#work_address_id"></i>
                                                         <select class="form-control form-control-sm select2" name="work_address_id" id="work_address_id">
+                                                            <option value="">Select</option>
                                                             @foreach($workAddress as $address)
                                                                 <option value="{{$address->id}}" @if (isset($item)) @if($item->work_address_id == $address->id) selected @endif @endif>{{$address->name}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                     <label for="work_location_id" class="col-md-2 col-form-label pb-2 pt-1">Work Location</label>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-4" id="work_location_response">
                                                         <i class="bx bx-link-external text-primary pointer external-link" data-link="{{route('master.getWorkLocation')}}" data-select="#work_location_id"></i>
                                                         <select class="form-control form-control-sm select2" name="work_location_id" id="work_location_id">
+                                                            <option value="">Select</option>
                                                             @foreach($workLocations as $workLocation)
                                                                 <option value="{{$workLocation->id}}" @if (isset($item)) @if($item->work_location_id == $workLocation->id) selected @endif @endif>{{$workLocation->name}}</option>
                                                             @endforeach
@@ -186,10 +188,10 @@
                                                 <p class="card-title-desc horizontal_separator mt-4 text-sm">Schedule</p>
                                                 <div class="row">
                                                     <label for="working_hour_id" class="col-md-2 col-form-label pb-2 pt-1">Working Hours</label>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-4" id="working_hour_response">
                                                         <i class="bx bx-link-external text-primary pointer external-link" data-link="{{route('master.getWorkingHours')}}" data-select="#working_hour_id"></i>
                                                         <select class="form-control form-control-sm select2" name="working_hour_id" id="working_hour_id">
-                                                            
+                                                            <option value="">Select</option>
                                                             @foreach($workingHours as $workingHour)
                                                                 <option value="{{$workingHour->id}}" @if (isset($item)) @if($item->working_hour_id == $workingHour->id) selected @endif @endif>{{$workingHour->name}}</option>
                                                             @endforeach
@@ -219,9 +221,10 @@
                                                         <p class="card-title-desc horizontal_separator mt-4 text-sm">Private Contact</p>
                                                         <div class="row">
                                                             <label for="address_id" class="col-md-4 col-form-label pb-2 pt-1">Address</label>
-                                                            <div class="col-md-8">
+                                                            <div class="col-md-8" id="address_response">
                                                                 <i class="bx bx-link-external text-primary pointer external-link" data-link="{{route('master.getAddress')}}" data-select="#address_id"></i>
                                                                 <select class="form-control form-control-sm select2" name="address_id" id="address_id">
+                                                                    <option value="">Select</option>
                                                                     @foreach($workAddress as $address)
                                                                     <option value="{{$address->id}}" @if (isset($item)) @if($item->address_id == $address->id) selected @endif @endif>{{$address->name}}</option>
                                                                     @endforeach
@@ -473,9 +476,10 @@
                                                         </div>
                                                         <div class="row">
                                                             <label for="job_position_id" class="col-md-4 col-form-label pb-2 pt-1">Job Position</label>
-                                                            <div class="col-md-8">
+                                                            <div class="col-md-8" id="job_position_response">
                                                                 <i class="bx bx-link-external text-primary pointer external-link" data-link="{{route('master.getJobPosition')}}" data-select="#job_position_id"></i>
                                                                 <select class="form-control form-control-sm select2" name="job_position_id" id="job_position_id">
+                                                                    <option value="">Select</option>
                                                                     @foreach($jobPositions as $jobPosition)
                                                                         <option value="{{$jobPosition->id}}" @if (isset($item)) @if($item->job_position_id == $jobPosition->id) selected @endif @endif>{{$jobPosition->name}}</option>
                                                                     @endforeach
@@ -562,307 +566,36 @@
             }
         });
 
+    });  
+
+    // =============  Popup Forms Actions =============
+    $(document).on('submit', '.popup_form', function(e)
+    {   
+        e.preventDefault();
+        let formData    = new FormData(this);
+        var url         = $("#url").val();
+        var id_response = $("#id_response").val();
+        $('.submit2').prop('disabled', true);
+
+        $.ajax({
+            url: 		url,
+            method: 	'POST',
+            data: formData,
+            dataType: 	'json',
+            contentType: false,
+            processData: false,
+            success : function(data)
+            {
+                $(id_response).html(data['data']);
+                $('.modal').modal('hide');
+                $('.submit2').prop('disabled', false);
+            },
+            error : function(reject)
+            {
+                $('.submit2').prop('disabled', false);
+            }
+        });
     });
-
-
-        //WORK WORK ADDRESS
-        $(document).on('submit', '.create_work_address', function(e)
-        {   
-            e.preventDefault();
-            let formData = new FormData(this);
-
-            $.ajax({
-                url: 		"{{route('master.workAddresses.store')}}",
-                method: 	'POST',
-                data: formData,
-                dataType: 	'json',
-                contentType: false,
-                processData: false,
-                success : function(data)
-                {
-                    var obj = JSON.parse(response);
-                    if(obj.status == true)
-                    {
-                        
-                    }
-                },
-                error : function(reject)
-                {
-                }
-            });
-
-        });
-
-        
-        $(document).on('submit', '.update_work_address', function(e)
-        {   
-            e.preventDefault();
-            let formData = new FormData(this);
-            var url = $("#url").val();
-
-
-            $.ajax({
-                url: 		url,
-                method: 	'POST',
-                data: formData,
-                dataType: 	'json',
-                contentType: false,
-                processData: false,
-                success : function(data)
-                {
-                    var obj = JSON.parse(response);
-                    if(obj.status == true)
-                    {
-                        
-                    }
-                },
-                error : function(reject)
-                {
-                }
-            });
-
-        });
-
-
-        //WORK LOCATION
-        $(document).on('submit', '.create_work_location', function(e)
-        {   
-            e.preventDefault();
-            let formData = new FormData(this);
-
-            $.ajax({
-                url: 		"{{route('master.workLocation.store')}}",
-                method: 	'POST',
-                data: formData,
-                dataType: 	'json',
-                contentType: false,
-                processData: false,
-                success : function(data)
-                {
-                    var obj = JSON.parse(response);
-                    if(obj.status == true)
-                    {
-                        
-                    }
-                },
-                error : function(reject)
-                {
-                }
-            });
-
-        });        
-
-
-
-        $(document).on('submit', '.update_work_location', function(e)
-        {   
-            e.preventDefault();
-            let formData = new FormData(this);
-            var url = $("#url").val();
-
-
-            $.ajax({
-                url: 		url,
-                method: 	'POST',
-                data: formData,
-                dataType: 	'json',
-                contentType: false,
-                processData: false,
-                success : function(data)
-                {
-                    var obj = JSON.parse(response);
-                    if(obj.status == true)
-                    {
-                        
-                    }
-                },
-                error : function(reject)
-                {
-                }
-            });
-
-        });
-
-        //WORK HOURS
-        $(document).on('submit', '.create_work_hours', function(e)
-        {   
-            e.preventDefault();
-            let formData = new FormData(this);
-
-            $.ajax({
-                url: 		"{{route('master.workingHours.store')}}",
-                method: 	'POST',
-                data: formData,
-                dataType: 	'json',
-                contentType: false,
-                processData: false,
-                success : function(data)
-                {
-                    var obj = JSON.parse(response);
-                    if(obj.status == true)
-                    {
-                        
-                    }
-                },
-                error : function(reject)
-                {
-                }
-            });
-
-        });
-
-
-
-        $(document).on('submit', '.update_work_hours', function(e)
-        {   
-            e.preventDefault();
-            let formData = new FormData(this);
-            var url = $("#url").val();
-
-
-            $.ajax({
-                url: 		url,
-                method: 	'POST',
-                data: formData,
-                dataType: 	'json',
-                contentType: false,
-                processData: false,
-                success : function(data)
-                {
-                    var obj = JSON.parse(response);
-                    if(obj.status == true)
-                    {
-                        
-                    }
-                },
-                error : function(reject)
-                {
-                }
-            });
-
-        });        
-        
-        
-        //ADDRESS
-        $(document).on('submit', '.create_address', function(e)
-        {   
-            e.preventDefault();
-            let formData = new FormData(this);
-
-            $.ajax({
-                url: 		"{{route('master.address.store')}}",
-                method: 	'POST',
-                data: formData,
-                dataType: 	'json',
-                contentType: false,
-                processData: false,
-                success : function(data)
-                {
-                    var obj = JSON.parse(response);
-                    if(obj.status == true)
-                    {
-                        
-                    }
-                },
-                error : function(reject)
-                {
-                }
-            });
-
-        });
-
-
-
-        $(document).on('submit', '.update_address', function(e)
-        {   
-            e.preventDefault();
-            let formData = new FormData(this);
-            var url = $("#url").val();
-
-
-            $.ajax({
-                url: 		url,
-                method: 	'POST',
-                data: formData,
-                dataType: 	'json',
-                contentType: false,
-                processData: false,
-                success : function(data)
-                {
-                    var obj = JSON.parse(response);
-                    if(obj.status == true)
-                    {
-                        
-                    }
-                },
-                error : function(reject)
-                {
-                }
-            });
-
-        });   
-
-
-
-        //JOB POSITION
-        $(document).on('submit', '.create_job_position', function(e)
-        {   
-            e.preventDefault();
-            let formData = new FormData(this);
-
-            $.ajax({
-                url: 		"{{route('master.jobPosition.store')}}",
-                method: 	'POST',
-                data: formData,
-                dataType: 	'json',
-                contentType: false,
-                processData: false,
-                success : function(data)
-                {
-                    var obj = JSON.parse(response);
-                    if(obj.status == true)
-                    {
-                        
-                    }
-                },
-                error : function(reject)
-                {
-                }
-            });
-
-        });
-
-
-        $(document).on('submit', '.update_job_position', function(e)
-        {   
-            e.preventDefault();
-            let formData = new FormData(this);
-            var url = $("#url").val();
-
-
-            $.ajax({
-                url: 		url,
-                method: 	'POST',
-                data: formData,
-                dataType: 	'json',
-                contentType: false,
-                processData: false,
-                success : function(data)
-                {
-                    var obj = JSON.parse(data);
-                    if(obj.status == true)
-                    {
-                        
-                    }
-                },
-                error : function(reject)
-                {
-                }
-            });
-
-        });  
-
-
 
 </script>
 

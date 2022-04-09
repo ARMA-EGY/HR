@@ -7,13 +7,19 @@
         <button type="button" class="close btn btn-danger btn-sm" data-bs-dismiss="modal" aria-hidden="true">×</button>
     </div>
 
-    	
-    <form  @if (isset($item)) id="update_work_hours" class="update_work_hours" @else id="create_work_hours" class="create_work_hours" @endif>
-    <div class="modal-body">   
-    @if (isset($item))
-        <input type="hidden" name="url" id="url" value="{{route('master.workingHours.update', $item->id)}}">
-        @method('PUT')
-    @endif
+    <div class="modal-body">	
+
+        <form class="popup_form">
+        @if (isset($item))
+            <input type="hidden" name="url" id="url" value="{{route('master.workingHours.update', $item->id)}}">
+            @method('PUT')
+        @else
+                <input type="hidden" name="url" id="url" value="{{route('master.workingHours.store')}}">
+        @endif  
+            <input type="hidden" name="data_link" value="{{route('master.getWorkingHours')}}"> 
+            <input type="hidden" name="input_name" value="working_hour_id"> 
+            <input type="hidden" id="id_response" value="#working_hour_response"> 
+
             <div class="row">
                 <label for="schedule_name" class="col-md-3 col-form-label pb-2 pt-1">Schedule Name</label>
                 <div class="col-md-6">

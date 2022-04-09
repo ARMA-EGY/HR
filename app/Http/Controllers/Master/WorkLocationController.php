@@ -79,8 +79,17 @@ class WorkLocationController extends Controller
             'location_number' => $request->location_number,
         ]);
         
+		$items     = WorkLocation::orderBy('id','desc')->get();
 
-        $rsData = $this->returnData('workLocation', $workLocation,'Work Location created successfully');
+        $data = view('master.components.dropDown',[
+            'items'         => $items,
+            'id'            => $workLocation->id,
+            'data_link'     => $request->data_link,
+            'input_name'    => $request->input_name,
+            'id_response'   => $request->id_response,
+        ])->render();
+
+        $rsData = $this->returnData('data', $data,'Work Location created successfully');
 
         return response()->json($rsData, 200);
     }
@@ -107,9 +116,18 @@ class WorkLocationController extends Controller
             'work_address_id' => $request->work_address,
             'location_number' => $request->location_number,
         ]);
-		
+        
+		$items     = WorkLocation::orderBy('id','desc')->get();
 
-        $rsData = $this->returnData('workLocation', $workLocation,'Work Location updated successfully');
+        $data = view('master.components.dropDown',[
+            'items'         => $items,
+            'id'            => $workLocation->id,
+            'data_link'     => $request->data_link,
+            'input_name'    => $request->input_name,
+            'id_response'   => $request->id_response,
+        ])->render();
+		
+        $rsData = $this->returnData('data', $data,'Work Location updated successfully');
           
         return response()->json($rsData, 200);
     }

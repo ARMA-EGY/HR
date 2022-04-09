@@ -6,14 +6,18 @@
         <h4 class="modal-title text-left"> Work Address</h4>
         <button type="button" class="close btn btn-danger btn-sm" data-bs-dismiss="modal" aria-hidden="true">×</button>
     </div>
-    <form  @if (isset($item)) id="update_work_address" class="update_work_address" @else id="create_work_address" class="create_work_address" @endif>
-    <div class="modal-body">	
-    
 
+    <form class="popup_form">
+    <div class="modal-body">	
     @if (isset($item))
         <input type="hidden" name="url" id="url" value="{{route('master.workAddresses.update', $item->id)}}">
         @method('PUT')
-    @endif
+    @else
+            <input type="hidden" name="url" id="url" value="{{route('master.workAddresses.store')}}">
+    @endif  
+        <input type="hidden" name="data_link" value="{{route('master.getWorkAddress')}}"> 
+        <input type="hidden" name="input_name" value="work_address_id"> 
+        <input type="hidden" id="id_response" value="#work_address_response"> 
 
             <div class="row mx-2">
                   <div class="form-check col-md-3">
@@ -160,7 +164,7 @@
     </div>
 
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                <button type="submit" class="btn btn-primary btn-sm submit2">Save</button>
                 <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
             </div>
         </form>
@@ -184,8 +188,4 @@
             $('.individual').slideDown();
         }
     });
-
-
-
-
 </script>

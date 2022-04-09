@@ -95,12 +95,12 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <h4 class="card-title">Employee</h4>
-                                                        <input id="e" type="hidden" name="employee_appraisal_template" >
+                                                        <input id="e" type="hidden" name="employee_appraisal_template" value="{{ isset($item) ? $item->employee_appraisal_template : old('employee_appraisal_template') }}">
                                                         <trix-editor input="e"></trix-editor>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <h4 class="card-title">Manager</h4>
-                                                        <input id="m" type="hidden" name="manager_appraisal_template" >
+                                                        <input id="m" type="hidden" name="manager_appraisal_template" value="{{ isset($item) ? $item->manager_appraisal_template : old('manager_appraisal_template') }}">
                                                         <trix-editor input="m"></trix-editor>
                                                     </div>
                                                 </div>

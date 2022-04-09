@@ -95,7 +95,7 @@ class WorkingHoursController extends Controller
 
 
 
-        $rsData = $this->returnData('workingHour', $workingHour,'Working Hour created successfully');
+        $rsData = $this->returnData('data', $data,'Working Hour created successfully');
 
         return response()->json($rsData, 200);
     }

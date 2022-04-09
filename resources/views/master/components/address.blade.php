@@ -7,13 +7,18 @@
         <button type="button" class="close btn btn-danger btn-sm" data-bs-dismiss="modal" aria-hidden="true">×</button>
     </div>
 
-    <form   @if (isset($item)) id="update_address" class="update_address" @else id="create_address" class="create_address" @endif>
+    <form class="popup_form">
         <div class="modal-body">	
-            
         @if (isset($item))
             <input type="hidden" name="url" id="url" value="{{route('master.address.update', $item->id)}}">
             @method('PUT')
-        @endif
+        @else
+                <input type="hidden" name="url" id="url" value="{{route('master.address.store')}}">
+        @endif  
+            <input type="hidden" name="data_link" value="{{route('master.getAddress')}}"> 
+            <input type="hidden" name="input_name" value="address_id"> 
+            <input type="hidden" id="id_response" value="#address_response"> 
+
                 <div class="row">
                     <label for="address_name" class="col-md-2 col-form-label pb-2 pt-1">Name</label>
                     <div class="col-md-6">
@@ -101,7 +106,7 @@
         </div>
 
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary btn-sm">Save</button>
+            <button type="submit" class="btn btn-primary btn-sm submit2">Save</button>
             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
         </div>
     </form>
