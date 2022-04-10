@@ -142,6 +142,7 @@ return [
 
     "ALL-CONTRACTS" => "جميع العقود",
     "CREATE-CONTRACT" => "انشاء عقد",
+    "SHOW-CONTRACT" => "مشاهدة عقد",
 
     "ALL" => "الجميع",
 
@@ -154,6 +155,7 @@ return [
     "ALL-ASSETS" => "جميع الاصول",
     "CREATE-ASSETS" => "انشاء اصول",
     "CREATE-ASSET" => "انشاء اصول",
+    "SHOW-ASSETS" => "مشاهدة اصول",
 
     "ALL-VEHICLES" => "جميع السيارات",
     "CREATE-VEHICLES" => "اضافة سيارات",

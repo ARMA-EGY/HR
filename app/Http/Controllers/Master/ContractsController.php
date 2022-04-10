@@ -51,9 +51,29 @@ class ContractsController extends Controller
 
     public function show(Contract $contract)
     {
-        return view('master.contract.show',[
-            'contract' => $contract,
-        ]);
+
+        $employees       = User::orderBy('id','desc')->get();
+        $departments       = Department::orderBy('id','desc')->get();
+        $countries       = Countries::all();
+
+        $salaryStructureTypes       = SalaryStructureType::orderBy('id','desc')->get();
+        $workingHours = WorkingHours::orderBy('id','desc')->get();
+        $jobPositions = JobPositions::orderBy('id','desc')->get();
+        $contractTypes = ContractTypes::orderBy('id','desc')->get();
+
+		return view('master.contract.show', [
+            'item' => $contract,
+            'employees' => $employees,
+            'departments' => $departments,
+            'countries' => $countries,
+
+            'salaryStructureTypes' => $salaryStructureTypes,
+            'workingHours' => $workingHours,
+            'jobPositions' => $jobPositions,
+            'contractTypes' => $contractTypes, 
+            ]);
+
+
     }  
 
 

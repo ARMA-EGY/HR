@@ -41,9 +41,15 @@ class VehiclesController extends Controller
 
     //-------------- Get Single Data ---------------\\    
 
-    public function show()
+    public function show(vehicle $vehicle)
     {
+        $employees  = Employee::orderBy('id','desc')->get();
+        $tags       = Tag::orderBy('id','desc')->get();
+
         return view('master.vehicles.show',[
+            'item' => $vehicle,
+            'employees' => $employees,
+            'tags' => $tags,
         ]);
     }  
     

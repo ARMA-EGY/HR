@@ -15,6 +15,8 @@ use App\Models\AddressType;
 use App\Models\Title;
 use App\Models\Tag;
 use App\Models\WorkingHours;
+use App\Models\WorkingHoursSchedule;
+use App\Models\workLocation;
 
 class WorkingHoursController extends Controller
 {
@@ -73,19 +75,25 @@ class WorkingHoursController extends Controller
     public function store(Request $request)
     {
         $workingHour =  WorkingHours::create([
-            'name' => $request->name,
+            'name' => $request->schedule_name,
             'average_hour_per_day' => $request->average_hour_per_day,
         ]);
-        
-		$items     = WorkLocation::orderBy('id','desc')->get();
 
-        $data = view('master.components.dropDown',[
-            'items'         => $items,
-            'id'            => $workingHour->id,
-            'data_link'     => $request->data_link,
-            'input_name'    => $request->input_name,
-            'id_response'   => $request->id_response,
-        ])->render();
+
+
+        for($i = 0; $i < count($request->name); $i++)
+        {
+            $workingHoursSchedule =  WorkingHoursSchedule::create([
+                'working_hour_id' => $workingHour->id,
+                'name' => $request->name[$i],
+                'day_of_week' => $request->day_of_week[$i],
+                'day_period' => $request->day_period[$i],
+                'work_from' => $request->work_from[$i],
+                'work_to' => $request->work_to[$i],
+            ]);
+        }
+
+
 
         $rsData = $this->returnData('data', $data,'Working Hour created successfully');
 
@@ -113,18 +121,23 @@ class WorkingHoursController extends Controller
             'name' => $request->name,
             'average_hour_per_day' => $request->average_hour_per_day,
         ]);
-        
-		$items     = WorkLocation::orderBy('id','desc')->get();
 
-        $data = view('master.components.dropDown',[
-            'items'         => $items,
-            'id'            => $WorkingHours->id,
-            'data_link'     => $request->data_link,
-            'input_name'    => $request->input_name,
-            'id_response'   => $request->id_response,
-        ])->render();
 
-        $rsData = $this->returnData('data', $data,'working Hours updated successfully');
+		WorkingHoursSchedule::where('working_hour_id',$WorkingHours->id)->delete();
+
+
+        for($i = 0; $i < count($request->name); $i++)
+        {
+            $workingHoursSchedule =  WorkingHoursSchedule::create([
+                'working_hour_id' => $WorkingHours->id,
+                'name' => $request->name[$i],
+                'day_of_week' => $request->day_of_week[$i],
+                'day_period' => $request->day_period[$i],
+                'work_from' => $request->work_from[$i],
+                'work_to' => $request->work_to[$i],
+            ]);
+        }
+        $rsData = $this->returnData('workingHoursForm', $workingHoursForm,'working Hours updated successfully');
           
         return response()->json($rsData, 200);
     }
@@ -139,9 +152,9 @@ class WorkingHoursController extends Controller
         
         if(isset($request->id))
         {
-            $item =  workLocation::find($request->id);
-
-            $workLocationForm = view('master.components.workLocation',[
+            $item =  WorkingHours::with('WorkingHoursSchedule')->where('id',$request->id)->first();
+            
+            $workingHoursForm = view('master.components.workingHours',[
                 'item' => $item,
             ])->render();
         }else{

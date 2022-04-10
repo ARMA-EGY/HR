@@ -140,6 +140,7 @@ return [
 
     "ALL-CONTRACTS" => "All Contracts",
     "CREATE-CONTRACT" => "Create Contract",
+    "SHOW-CONTRACT" => "SHOW Contract",
 
     "ALL" => "All",
 
@@ -152,6 +153,7 @@ return [
     "ALL-ASSETS" => "All Assets",
     "CREATE-ASSETS" => "Create Assets",
     "CREATE-ASSET" => "Create Asset",
+    "SHOW-ASSETS" => "Show Assets",
 
     "ALL-VEHICLES" => "All Vehicles",
     "CREATE-VEHICLES" => "Create Vehicles",

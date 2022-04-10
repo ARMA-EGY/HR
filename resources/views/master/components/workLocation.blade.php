@@ -22,16 +22,16 @@
             <div class="col-md-6">
                 <input class="form-control form-control-sm" type="text" name="work_location" id="work_location" value="{{ isset($item) ? $item->name : old('name') }}">
             </div>
-        </div>
 
-        <div class="row">
-            <label for="work_address" class="col-md-3 col-form-label pb-2 pt-1">Work Address</label>
-            <div class="col-md-6">
-                <select class="form-control form-control-sm select2" name="work_address" id="work_address">
-                    @foreach($workAddresses as $workAddress)
-                        <option value="{{$workAddress->id}}" @if (isset($item)) @if($item->work_address == $workAddress->id) selected @endif @endif>{{$workAddress->name}}</option>
-                    @endforeach
-                </select>
+            <div class="row">
+                <label for="work_address" class="col-md-3 col-form-label pb-2 pt-1">Work Address</label>
+                <div class="col-md-6">
+                    <select class="form-control form-control-sm select2" name="work_address" id="work_address">
+                        @foreach($workAddresses as $workAddress)
+                            <option value="{{$workAddress->id}}" @if (isset($item)) @if($item->work_address_id == $workAddress->id) selected @endif @endif>{{$workAddress->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
         </div>
 
