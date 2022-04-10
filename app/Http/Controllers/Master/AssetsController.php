@@ -45,7 +45,7 @@ class AssetsController extends Controller
 
     //-------------- Get Single Data ---------------\\    
 
-    public function show()
+    public function show(Asset $asset)
     {
 
         $employees              = Employee::orderBy('id','desc')->get();
