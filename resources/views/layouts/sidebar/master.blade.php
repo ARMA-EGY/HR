@@ -14,7 +14,7 @@
                         <span >{{__('master.EMPLOYEES')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li class=" {{request()->routeIs('master.employee.index') ? 'mm-active' : '' }}"><a href="{{route('master.employee.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-EMPLOYEES')}}</a></li>
+                        <li class=" {{request()->routeIs('master.employee.index') ? 'mm-active' : '' }}"><a href="{{route('master.employee.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.EMPLOYEES-LIST')}}</a></li>
                         <li class=" {{request()->routeIs('master.employee.create') ? 'mm-active' : '' }}"><a href="{{route('master.employee.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-EMPLOYEE')}}</a></li>
                     </ul>
                 </li>
@@ -25,7 +25,7 @@
                         <span >{{__('master.DEPARTMENTS')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li class=" {{request()->routeIs('master.department.index') ? 'mm-active' : '' }}"><a href="{{route('master.department.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-DEPARTMENTS')}}</a></li>
+                        <li class=" {{request()->routeIs('master.department.index') ? 'mm-active' : '' }}"><a href="{{route('master.department.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.DEPARTMENTS-LIST')}}</a></li>
                         <li class=" {{request()->routeIs('master.department.create') ? 'mm-active' : '' }}"><a href="{{route('master.department.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-DEPARTMENT')}}</a></li>
                     </ul>
                 </li>
@@ -36,7 +36,7 @@
                         <span >{{__('master.CONTRACTS')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li class=" {{request()->routeIs('master.contract.index') ? 'mm-active' : '' }}"><a href="{{route('master.contract.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-CONTRACTS')}}</a></li>
+                        <li class=" {{request()->routeIs('master.contract.index') ? 'mm-active' : '' }}"><a href="{{route('master.contract.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CONTRACTS-LIST')}}</a></li>
                         <li class=" {{request()->routeIs('master.contract.create') ? 'mm-active' : '' }}"><a href="{{route('master.contract.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-CONTRACT')}}</a></li>
                     </ul>
                 </li>
@@ -82,7 +82,7 @@
                         <span >{{__('master.ASSETS')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li class=" {{request()->routeIs('master.assets.index') ? 'mm-active' : '' }}"><a href="{{route('master.assets.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-ASSETS')}}</a></li>
+                        <li class=" {{request()->routeIs('master.assets.index') ? 'mm-active' : '' }}"><a href="{{route('master.assets.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ASSETS-LIST')}}</a></li>
                         <li class=" {{request()->routeIs('master.assets.create') ? 'mm-active' : '' }}"><a href="{{route('master.assets.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-ASSETS')}}</a></li>
                     </ul>
                 </li>
@@ -93,7 +93,7 @@
                         <span >{{__('master.VEHICLES')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li class=" {{request()->routeIs('master.vehicles.index') ? 'mm-active' : '' }}"><a href="{{route('master.vehicles.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-VEHICLES')}}</a></li>
+                        <li class=" {{request()->routeIs('master.vehicles.index') ? 'mm-active' : '' }}"><a href="{{route('master.vehicles.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.VEHICLES-LIST')}}</a></li>
                         <li class=" {{request()->routeIs('master.vehicles.create') ? 'mm-active' : '' }}"><a href="{{route('master.vehicles.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-VEHICLES')}}</a></li>
                     </ul>
                 </li>
@@ -104,7 +104,7 @@
                         <span >{{__('master.WORK-SCHEDULES')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li class=" {{request()->routeIs('master.workingHours.index') ? 'mm-active' : '' }}"><a href="{{route('master.workingHours.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.ALL-WORK-SCHEDULES')}}</a></li>
+                        <li class=" {{request()->routeIs('master.workingHours.index') ? 'mm-active' : '' }}"><a href="{{route('master.workingHours.index')}}"><i class="bx bx-disc fs-16"></i> {{__('master.WORK-SCHEDULES-LIST')}}</a></li>
                         <li class=" {{request()->routeIs('master.workingHours.create') ? 'mm-active' : '' }}"><a href="{{route('master.workingHours.create')}}"><i class="bx bx-disc fs-16"></i> {{__('master.CREATE-WORK-SCHEDULE')}}</a></li>
                     </ul>
                 </li>

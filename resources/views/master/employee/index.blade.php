@@ -23,12 +23,12 @@
                     <div class="row mt-5">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0 font-size-18">{{__('master.ALL-EMPLOYEES')}}</h4>
+                                <h4 class="mb-sm-0 font-size-18">{{__('master.EMPLOYEES-LIST')}}</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">{{__('master.EMPLOYEES')}}</a></li>
-                                        <li class="breadcrumb-item active">{{__('master.ALL-EMPLOYEES')}}</li>
+                                        <li class="breadcrumb-item active">{{__('master.EMPLOYEES-LIST')}}</li>
                                     </ol>
                                 </div>
 
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-right">
-                                <a href="{{route('master.employee.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> Create New Employee</a>
+                                <a href="{{route('master.employee.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> {{__('master.ADD-NEW-EMPLOYEE')}}</a>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -57,12 +57,12 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th class="align-middle">#</th>
-                                                    <th class="align-middle">Employee Name</th>
-                                                    <th class="align-middle">Job Position</th>
-                                                    <th class="align-middle">Phone</th>
-                                                    <th class="align-middle">Email</th>
-                                                    <th class="align-middle">Department</th>
-                                                    <th class="align-middle">Action</th>
+                                                    <th class="align-middle">{{__('master.EMPLOYEE-NAME')}}</th>
+                                                    <th class="align-middle">{{__('master.JOB-POSITION')}}</th>
+                                                    <th class="align-middle">{{__('master.PHONE')}}</th>
+                                                    <th class="align-middle">{{__('master.EMAIL')}}</th>
+                                                    <th class="align-middle">{{__('master.DEPARTMENT')}}</th>
+                                                    <th class="align-middle"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -88,11 +88,11 @@
                                             <tfoot>
                                                 <tr>
                                                     <th class="align-middle p-2 search_number filter"></th>
-                                                    <th class="align-middle filter">Employee Name</th>
-                                                    <th class="align-middle filter">Job Position</th>
-                                                    <th class="align-middle filter">Phone</th>
-                                                    <th class="align-middle filter">Email</th>
-                                                    <th class="align-middle filter">Department</th>
+                                                    <th class="align-middle filter">{{__('master.EMPLOYEE-NAME')}}</th>
+                                                    <th class="align-middle filter">{{__('master.JOB-POSITION')}}</th>
+                                                    <th class="align-middle filter">{{__('master.PHONE')}}</th>
+                                                    <th class="align-middle filter">{{__('master.EMAIL')}}</th>
+                                                    <th class="align-middle filter">{{__('master.DEPARTMENT')}}</th>
                                                     <th class="align-middle filter-hidden"></th>
                                                 </tr>
                                             </tfoot>

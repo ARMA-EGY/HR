@@ -54,8 +54,33 @@ class EmployeesController extends Controller
 
     public function show(Employee $employee)
     {
+		$managers           = Employee::orderBy('id','desc')->get();
+        $departments        = Department::orderBy('id','desc')->get();
+        $countries          = Countries::all();
+        $workAddress        = WorkAddress::orderBy('id','desc')->get();
+        $tags               = Tag::orderBy('id','desc')->get();
+        $workLocations      = WorkLocation::orderBy('id','desc')->get();
+        $workingHours       = WorkingHours::orderBy('id','desc')->get();
+        $maritalStatuses    = MaritalStatus::orderBy('id','desc')->get();
+        $certificateLevels  = CertificateLevel::orderBy('id','desc')->get();
+        $employeesTypes     = EmployeesTypes::orderBy('id','desc')->get();
+        $languages          = Language::orderBy('id','desc')->get();
+        $jobPositions       = JobPositions::orderBy('id','desc')->get();
+
         return view('master.employee.show',[
-            'employee' => $employee,
+            'item'              => $employee,
+            'managers'          => $managers,
+            'departments'       => $departments,
+            'countries'         => $countries,
+            'workAddress'       => $workAddress,
+            'tags'              => $tags,
+            'workLocations'     => $workLocations,
+            'workingHours'      => $workingHours,
+            'maritalStatuses'   => $maritalStatuses,
+            'certificateLevels' => $certificateLevels,
+            'employeesTypes'    => $employeesTypes,
+            'languages'         => $languages,
+            'jobPositions'      => $jobPositions,  
         ]);
     }  
     
@@ -65,33 +90,32 @@ class EmployeesController extends Controller
 
     public function create()
     {
-		$managers       = Employee::orderBy('id','desc')->get();
-        $departments       = Department::orderBy('id','desc')->get();
-        $countries       = Countries::all();
-        $workAddress = WorkAddress::orderBy('id','desc')->get();
-        $tags       = Tag::orderBy('id','desc')->get();
-        $workLocations = WorkLocation::orderBy('id','desc')->get();
-        $workingHours = WorkingHours::orderBy('id','desc')->get();
-        $maritalStatuses = MaritalStatus::orderBy('id','desc')->get();
-        $certificateLevels = CertificateLevel::orderBy('id','desc')->get();
-        $employeesTypes = EmployeesTypes::orderBy('id','desc')->get();
-        $languages = Language::orderBy('id','desc')->get();
-        $jobPositions = JobPositions::orderBy('id','desc')->get();
-
+		$managers           = Employee::orderBy('id','desc')->get();
+        $departments        = Department::orderBy('id','desc')->get();
+        $countries          = Countries::all();
+        $workAddress        = WorkAddress::orderBy('id','desc')->get();
+        $tags               = Tag::orderBy('id','desc')->get();
+        $workLocations      = WorkLocation::orderBy('id','desc')->get();
+        $workingHours       = WorkingHours::orderBy('id','desc')->get();
+        $maritalStatuses    = MaritalStatus::orderBy('id','desc')->get();
+        $certificateLevels  = CertificateLevel::orderBy('id','desc')->get();
+        $employeesTypes     = EmployeesTypes::orderBy('id','desc')->get();
+        $languages          = Language::orderBy('id','desc')->get();
+        $jobPositions       = JobPositions::orderBy('id','desc')->get();
 
         return view('master.employee.create',[
-            'managers' => $managers,
-            'departments' => $departments,
-            'countries' => $countries,
-            'workAddress' => $workAddress,
-            'tags' => $tags,
-            'workLocations' => $workLocations,
-            'workingHours' => $workingHours,
-            'maritalStatuses' => $maritalStatuses,
+            'managers'          => $managers,
+            'departments'       => $departments,
+            'countries'         => $countries,
+            'workAddress'       => $workAddress,
+            'tags'              => $tags,
+            'workLocations'     => $workLocations,
+            'workingHours'      => $workingHours,
+            'maritalStatuses'   => $maritalStatuses,
             'certificateLevels' => $certificateLevels,
-            'employeesTypes' => $employeesTypes,
-            'languages' => $languages,
-            'jobPositions' => $jobPositions,           
+            'employeesTypes'    => $employeesTypes,
+            'languages'         => $languages,
+            'jobPositions'      => $jobPositions,           
         ]);
     }
 
