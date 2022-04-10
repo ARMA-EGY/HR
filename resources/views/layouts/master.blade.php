@@ -258,6 +258,11 @@
                 {
                     $("body").tooltip({ selector: '[data-toggle=tooltip]' });
                 });
+
+                $(document).on("click",".alert-dismissible .close", function()
+                {
+                    $(this).parents('.alert-dismissible').hide();
+                });
         </script>
 
         @yield('script')

@@ -23,12 +23,12 @@
                     <div class="row mt-5">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0 font-size-18">{{__('master.ALL-VEHICLES')}}</h4>
+                                <h4 class="mb-sm-0 font-size-18">{{__('master.VEHICLES-LIST')}}</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">{{__('master.VEHICLES')}}</a></li>
-                                        <li class="breadcrumb-item active">{{__('master.ALL-VEHICLES')}}</li>
+                                        <li class="breadcrumb-item active">{{__('master.VEHICLES-LIST')}}</li>
                                     </ol>
                                 </div>
 
@@ -41,8 +41,8 @@
                         <div class="col-sm-4">
                         </div>
                         <div class="col-sm-8">
-                            <div class="text-sm-end">
-                                <a href="{{route('master.vehicles.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> Create New Vehicle</a>
+                            <div class="text-right">
+                                <a href="{{route('master.vehicles.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> {{__('master.ADD-NEW-VEHICLE')}}</a>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -57,11 +57,11 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th class="align-middle">#</th>
-                                                    <th class="align-middle">Model</th>
-                                                    <th class="align-middle">License Plate</th>
-                                                    <th class="align-middle">Chassis No.</th>
-                                                    <th class="align-middle">Driver</th>
-                                                    <th class="align-middle">Action</th>
+                                                    <th class="align-middle">{{__('master.VEHICLE-MODEL')}}</th>
+                                                    <th class="align-middle">{{__('master.LICENSE-PLATE')}}</th>
+                                                    <th class="align-middle">{{__('master.CHASSIS-NUMBER')}}</th>
+                                                    <th class="align-middle">{{__('master.DRIVER')}}</th>
+                                                    <th class="align-middle"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -86,10 +86,10 @@
                                             <tfoot>
                                                 <tr>
                                                     <th class="align-middle p-2 search_number filter"></th>
-                                                    <th class="align-middle filter">Model</th>
-                                                    <th class="align-middle filter">License Plate</th>
-                                                    <th class="align-middle filter">Chassis No.</th>
-                                                    <th class="align-middle filter">Driver</th>
+                                                    <th class="align-middle filter">{{__('master.VEHICLE-MODEL')}}</th>
+                                                    <th class="align-middle filter">{{__('master.LICENSE-PLATE')}}</th>
+                                                    <th class="align-middle filter">{{__('master.CHASSIS-NUMBER')}}</th>
+                                                    <th class="align-middle filter">{{__('master.DRIVER')}}</th>
                                                     <th class="align-middle filter-hidden"></th>
                                                 </tr>
                                             </tfoot>

@@ -41,7 +41,7 @@
                         <div class="col-sm-4">
                         </div>
                         <div class="col-sm-8">
-                            <div class="text-sm-end">
+                            <div class="text-right">
                                 <a href="{{route('master.contract.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> Create New Contract</a>
                             </div>
                         </div><!-- end col-->

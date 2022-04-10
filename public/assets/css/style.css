@@ -82,22 +82,22 @@
 
 .select2-container .select2-selection--single 
 {
-    height: 27px;
+    height: 27px !important;
 }
 
 .select2-container .select2-selection--single .select2-selection__rendered 
 {
-    line-height: 27px;
+    line-height: 27px !important;
 }
 
 .select2-container .select2-selection--single .select2-selection__arrow 
 {
-    height: 27px;
+    height: 27px !important;
 }
 
 .h-30
 {
-    height: 30px;
+    height: 30px !important;
 }
 
 .status-circle
@@ -151,4 +151,82 @@
 .text-left
 {
     text-align: left!important;
+}
+
+#sidebar-menu ul li a 
+{
+    padding: 0.625rem 1rem;
+}
+
+#sidebar-menu ul li ul.sub-menu li a 
+{
+    padding: 0.4rem 1.5rem 0.4rem 2.5rem;
+}
+
+.btn-block
+{
+    width: 100%;
+}
+
+.alert-dismissible .close 
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 0.75rem 1.25rem;
+    color: inherit;
+}
+
+button.close 
+{
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+}
+
+.close 
+{
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+
+.close:not(:disabled):not(.disabled):hover 
+{
+    opacity: .75;
+}
+
+.close:hover 
+{
+    color: #000;
+    text-decoration: none;
+}
+
+.w-fit-content
+{
+    width: fit-content;
+}
+
+.company-image
+{
+    width: 30px; 
+    height: unset; 
+    background: unset;
+}
+
+.action-btn
+{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: auto 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }

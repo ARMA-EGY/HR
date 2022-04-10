@@ -92,13 +92,12 @@
         $(this).tab('show')
     })
 
-    $('.add_line').click(function(){
-
+    $('.add_line').click(function()
+    {
         var item = $('.line').length
         var total = item + 1;
 
         $("#table_body").append('<tr class="line parent_'+total+'"><th class="p-1"><input type="text" name="name[]" class="form-control form-control-sm"></th><th class="p-1"><input type="text" name="day_of_week[]" class="form-control form-control-sm"></th><th class="p-1"><input type="text" name="day_period[]" class="form-control form-control-sm"></th><th class="p-1"><input type="text" name="work_from[]" class="form-control form-control-sm"></th><th class="p-1"><input type="text" name="work_to[]" class="form-control form-control-sm"></th><th class="p-1"><a class="btn btn-sm btn-danger remove-line text-white" data-class="parent_'+total+'"><i class="fa fa-times "></i></a></th></tr>');
-        
     });
 
     $(document).on("click",".remove-line", function()

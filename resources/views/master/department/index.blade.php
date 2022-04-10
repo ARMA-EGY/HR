@@ -23,12 +23,12 @@
                     <div class="row mt-5">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0 font-size-18">{{__('master.ALL-DEPARTMENTS')}}</h4>
+                                <h4 class="mb-sm-0 font-size-18">{{__('master.DEPARTMENTS-LIST')}}</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">{{__('master.DEPARTMENTS')}}</a></li>
-                                        <li class="breadcrumb-item active">{{__('master.ALL-DEPARTMENTS')}}</li>
+                                        <li class="breadcrumb-item active">{{__('master.DEPARTMENTS-LIST')}}</li>
                                     </ol>
                                 </div>
 
@@ -41,8 +41,8 @@
                         <div class="col-sm-4">
                         </div>
                         <div class="col-sm-8">
-                            <div class="text-sm-end">
-                                <a href="{{route('master.department.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> Create New Department</a>
+                            <div class="text-right">
+                                <a href="{{route('master.department.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> {{__('master.ADD-NEW-DEPARTMENT')}}</a>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -57,10 +57,10 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th class="align-middle">#</th>
-                                                    <th class="align-middle">Department Name</th>
-                                                    <th class="align-middle">Manager</th>
-                                                    <th class="align-middle">Parent Department</th>
-                                                    <th class="align-middle">Action</th>
+                                                    <th class="align-middle">{{__('master.DEPARTMENT-NAME')}}</th>
+                                                    <th class="align-middle">{{__('master.DEPARTMENT-MANAGER')}}</th>
+                                                    <th class="align-middle">{{__('master.PARENT-DEPARTMENT')}}</th>
+                                                    <th class="align-middle"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -73,6 +73,7 @@
                                                         <td>{{ !empty($item->department) ? $item->department->name:'-' }}</td>
                                                         <td>
                                                             <div class="d-flex gap-3">
+                                                                <a data-toggle="tooltip" data-placement="top" title="{{__('master.VIEW-DETAILS')}}" href="{{route('master.department.show', $item->id)}}" class="btn-primary py-1 px-2 btn-rounded"><i class="mdi mdi-eye font-size-18"></i></a>
                                                                 <a data-toggle="tooltip" data-placement="top" title="{{__('master.EDIT')}}" href="{{route('master.department.edit', $item->id)}}" class="btn-success py-1 px-2 btn-rounded"><i class="mdi mdi-pencil font-size-18"></i></a>
                                                             </div>
                                                         </td>
@@ -83,9 +84,9 @@
                                             <tfoot>
                                                 <tr>
                                                     <th class="align-middle p-2 search_number filter"></th>
-                                                    <th class="align-middle filter">Department Name</th>
-                                                    <th class="align-middle filter">Manager</th>
-                                                    <th class="align-middle filter">Parent Department</th>
+                                                    <th class="align-middle filter">{{__('master.DEPARTMENT-NAME')}}</th>
+                                                    <th class="align-middle filter">{{__('master.DEPARTMENT-MANAGER')}}</th>
+                                                    <th class="align-middle filter">{{__('master.PARENT-DEPARTMENT')}}</th>
                                                     <th class="align-middle filter-hidden"></th>
                                                 </tr>
                                             </tfoot>

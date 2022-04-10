@@ -46,8 +46,13 @@ class DepartmentsController extends Controller
 
     public function show(Department $department)
     {
+		$managers       = Employee::orderBy('id','desc')->get();
+        $departments    = Department::orderBy('id','desc')->get();
+
         return view('master.department.show',[
-            'department' => $department,
+            'item' => $department,
+            'managers' => $managers,
+            'departments' => $departments,
         ]);
     }  
     

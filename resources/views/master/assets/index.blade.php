@@ -23,12 +23,12 @@
                     <div class="row mt-5">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0 font-size-18">{{__('master.ALL-ASSETS')}}</h4>
+                                <h4 class="mb-sm-0 font-size-18">{{__('master.ASSETS-LIST')}}</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">{{__('master.ASSETS')}}</a></li>
-                                        <li class="breadcrumb-item active">{{__('master.ALL-ASSETS')}}</li>
+                                        <li class="breadcrumb-item active">{{__('master.ASSETS-LIST')}}</li>
                                     </ol>
                                 </div>
 
@@ -41,8 +41,8 @@
                         <div class="col-sm-4">
                         </div>
                         <div class="col-sm-8">
-                            <div class="text-sm-end">
-                                <a href="{{route('master.assets.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> Create New Asset</a>
+                            <div class="text-right">
+                                <a href="{{route('master.assets.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> {{__('master.ADD-NEW-ASSET')}}</a>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -57,12 +57,12 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th class="align-middle">#</th>
-                                                    <th class="align-middle">Serial No.</th>
-                                                    <th class="align-middle">Asset Name</th>
-                                                    <th class="align-middle">Category</th>
-                                                    <th class="align-middle">Vendor</th>
-                                                    <th class="align-middle">Used By</th>
-                                                    <th class="align-middle">Action</th>
+                                                    <th class="align-middle">{{__('master.SERIAL-NUMBER')}}</th>
+                                                    <th class="align-middle">{{__('master.ASSET-NAME')}}</th>
+                                                    <th class="align-middle">{{__('master.CATEGORY')}}</th>
+                                                    <th class="align-middle">{{__('master.VENDOR')}}</th>
+                                                    <th class="align-middle">{{__('master.USED-BY')}}</th>
+                                                    <th class="align-middle"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -88,11 +88,11 @@
                                             <tfoot>
                                                 <tr>
                                                     <th class="align-middle p-2 search_number filter"></th>
-                                                    <th class="align-middle filter">Serial No.</th>
-                                                    <th class="align-middle filter">Asset Name</th>
-                                                    <th class="align-middle filter">Category</th>
-                                                    <th class="align-middle filter">Vendor</th>
-                                                    <th class="align-middle filter">Used By</th>
+                                                    <th class="align-middle filter">{{__('master.SERIAL-NUMBER')}}</th>
+                                                    <th class="align-middle filter">{{__('master.ASSET-NAME')}}</th>
+                                                    <th class="align-middle filter">{{__('master.CATEGORY')}}</th>
+                                                    <th class="align-middle filter">{{__('master.VENDOR')}}</th>
+                                                    <th class="align-middle filter">{{__('master.USED-BY')}}</th>
                                                     <th class="align-middle filter-hidden"></th>
                                                 </tr>
                                             </tfoot>

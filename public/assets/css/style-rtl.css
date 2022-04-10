@@ -48,3 +48,25 @@ body
 {
     margin-left: 0px;
 }
+
+.breadcrumb-item+.breadcrumb-item::before 
+{
+    float: right;
+    padding: 0 0.5rem;
+}
+
+.list-unstyled 
+{
+    padding: 0;
+    list-style: none;
+}
+
+.text-left
+{
+    text-align: right !important;
+}
+
+.text-right
+{
+    text-align: left !important;
+}
