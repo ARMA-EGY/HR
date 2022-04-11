@@ -53,7 +53,7 @@ class ContractsController extends Controller
     {
 
         $employees       = User::orderBy('id','desc')->get();
-        $departments       = Department::orderBy('id','desc')->get();
+        $departments     = Department::orderBy('id','desc')->get();
         $countries       = Countries::all();
 
         $salaryStructureTypes       = SalaryStructureType::orderBy('id','desc')->get();

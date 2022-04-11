@@ -337,6 +337,7 @@ return [
     "ALL-EMPLOYEES" => "جميع الموظفون",
     "EMPLOYEES-LIST" => "قائمة الموظفون",
 
+    "EMPLOYEE-NAME" => "اسم الموظف",
     "BASIC-INFORMATION" => "معلومات اساسية",
     "WORK-MOBILE" => "جوال العمل",
     "WORK-PHONE" => "هاتف العمل",

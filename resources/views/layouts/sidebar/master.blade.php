@@ -66,8 +66,8 @@
                 <li class="menu-title">{{__('master.RESOURCES-MANAGEMENT')}}</li>
 
                 <li>
-                    <a href="#" class="has-arrow waves-effect">
-                        <i class='bx bxs-file'></i>
+                    <a href="#" class="has-arrow waves-effect text-warning">
+                        <i class='bx bxs-file text-warning'></i>
                         <span >{{__('master.DOCUMENTS')}}</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">

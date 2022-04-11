@@ -335,6 +335,7 @@ return [
     "ALL-EMPLOYEES" => "All Employees",
     "EMPLOYEES-LIST" => "Employees List",
 
+    "EMPLOYEE-NAME" => "Employee Name",
     "BASIC-INFORMATION" => "Basic Information",
     "WORK-MOBILE" => "Work Mobile",
     "WORK-PHONE" => "Work Phone",
